@@ -1,32 +1,32 @@
-# Prerequisites
-*.d
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
+# Build Directories
+Debug/
+Release/
+x64/
+x86/
+
+# Compiled Binary
+*.exe
+*.dll
+*.lib
 *.obj
 
 # Precompiled Headers
-*.gch
-*.pch
+*.pdb
+*.idb
+*.ipch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# Visual Studio cache files
+*.VC.db
+*.VC.opendb
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# Other files
+*.log
+*.tlog
+*.lastbuildstate
