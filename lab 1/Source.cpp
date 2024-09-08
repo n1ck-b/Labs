@@ -135,7 +135,10 @@ Car** updateCarInfo(Car** array, int numOfCars)
 		cout << "Автомобилей в каталоге нет" << endl;
 		return array;
 	}
-	int catalogIndex, choice, year, mileage;
+	int catalogIndex;
+	int choice;
+	int year;
+	int mileage;
 	float price;
 	string brand, model;
 	catalogOutput(array, numOfCars);
