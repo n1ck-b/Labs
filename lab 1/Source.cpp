@@ -176,6 +176,8 @@ Car** updateCarInfo(Car** array, int numOfCars)
 			getline(cin, model);
 			array[catalogIndex - 1]->setModel(model);
 			break;
+		default:
+			return array;
 	}
 	return array;
 }

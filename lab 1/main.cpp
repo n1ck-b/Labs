@@ -29,5 +29,4 @@ int main()
 		}
 		mainMenuChoice = mainMenu();
 	}
-	return 0;
 }
