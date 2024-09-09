@@ -29,7 +29,7 @@ void Car::setObject(int year, int mile, float pr, string& br, string& md)
 	brand = br;
 	model = md;
 }
-void Car::readObject()
+void Car::readObject() const
 {
 	cout << "  Год выпуска: " << yearOfProduction << endl;
 	cout << "  Пробег в км: " << mileage << endl;

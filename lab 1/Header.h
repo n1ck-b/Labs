@@ -17,7 +17,7 @@ public:
 	void setBrand(string& br);
 	void setModel(string& md);
 	void setObject(int year, int mile, float pr, string& br, string& md);
-	void readObject();
+	void readObject() const;
 	void deleteObject(Car**& array, int index, int& numOfCars);
 };
 int mainMenu();
