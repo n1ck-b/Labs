@@ -24,10 +24,10 @@ int main()
 			array = deleteOneCar(array, numOfCars);
 			break;
 		default:
+			freeMemory(array, numOfCars);
 			return 0;
 		}
 		mainMenuChoice = mainMenu();
 	}
-	freeMemory(array, numOfCars);
 	return 0;
 }

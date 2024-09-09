@@ -44,12 +44,13 @@ void Car::deleteObject(Car**& array, int index, int &numOfCars)
 		cout << "Неверный индекс или число автомобилей = 0" << endl;
 		return;
 	}
+	delete[] array[index];
 	for (int i = index; i < numOfCars - 1; i++)
 	{
 		array[i] = array[i + 1];
 	}
+	array[numOfCars - 1] = nullptr;
 	numOfCars--;
-	delete array[index];
 }
 int mainMenu()
 {
@@ -99,7 +100,7 @@ Car** addOneCar(Car** array, int& numOfCars)
 	float price;
 	string brand;
 	string model;
-	array[numOfCars] = new Car;
+	array[numOfCars] = new Car[1];
 	numOfCars++;
 	cout << "Введите год выпуска автомобиля: ";
 	cin >> year;
@@ -124,7 +125,7 @@ void catalogOutput(Car** array, int numOfCars)
 	}
 	for (int i = 0; i < numOfCars; i++)
 	{
-		cout<< "\n" << i + 1 << "-й автомобиль:" << endl;
+		cout << "\n" << i + 1 << "-й автомобиль:" << endl;
 		array[i]->readObject();
 	}
 }
@@ -140,7 +141,8 @@ Car** updateCarInfo(Car** array, int numOfCars)
 	int year;
 	int mileage;
 	float price;
-	string brand, model;
+	string brand;
+	string model;
 	catalogOutput(array, numOfCars);
 	cout << "\nВведите индекс автомобиля, о котором необходимо изменить информацию" << endl;
 	cin >> catalogIndex;
@@ -195,7 +197,6 @@ void freeMemory(Car**& array, int numOfCars)
 {
 	for (int i = 0; i < numOfCars; i++)
 	{
-		delete array[i];
+		delete[] array[i];
 	}
-	delete array;
 }
