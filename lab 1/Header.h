@@ -4,7 +4,7 @@ using namespace std;
 
 class Car
 {
-private:
+protected:
 	int yearOfProduction;
 	int mileage;
 	float price;
@@ -14,16 +14,45 @@ public:
 	void setYear(int year);
 	void setMileage(int mile);
 	void setPrice(float pr);
-	void setBrand(string& br);
-	void setModel(string& md);
-	void setObject(int year, int mile, float pr, string& br, string& md);
+	void setBrand(const string& br);
+	void setModel(const string& md);
+	void setObject(int year, int mile, float pr, const string& br, const string& md);
 	void readObject() const;
-	void deleteObject(Car**& array, int index, int& numOfCars);
 };
+
+class Node : public Car
+{
+public:
+	Node* next;
+	int GetYear() const;
+	int GetMileage() const;
+	float GetPrice() const;
+	string GetBrand() const;
+	string GetModel() const;
+};
+
+class List : public Car
+{
+private:
+	Node* first;
+	Node* last;
+	int num;
+public:
+	List();
+	~List();
+	int GetNum() const;
+	bool isEmpty() const;
+	void push(int year, int mileage, float price, const string& brand, const string& model);
+	void print();
+	void removeByIndex(int index);
+	Node* operator [] (int index);
+	void searchByParameter(int choice, int year, int mileage, float priceLow, float priceHigh, const string& brand, const string& model);
+};
+
 int mainMenu();
 int subMenu();
-Car** addOneCar(Car** array, int& numOfCars);
-void catalogOutput(Car** array, int numOfCars);
-Car** updateCarInfo(Car** array, int numOfCars);
-Car** deleteOneCar(Car** array, int& numOfCars);
-void freeMemory(Car**& array, int numOfCars);
+void addOneCar(List& list);
+void catalogOutput(List& list);
+void updateCarInfo(List& list);
+void deleteOneCar(List& list);
+void searchForCar(List& list);
