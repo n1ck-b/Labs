@@ -1,31 +1,37 @@
-name: Build
+name: SonarCloud Scan
+
 on:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
-  build:
-    name: Build
+  sonarcloud:
     runs-on: windows-latest
-    env:
-      BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
         with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Install sonar-scanner and build-wrapper
-        uses: sonarsource/sonarcloud-github-c-cpp@v3
-      - name: Run build-wrapper
-        run: |
-          New-Item -ItemType directory -Path build
-          cmake -S . -B build
-          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --config Release
-      - name: Run sonar-scanner
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: C:\Users\runneradmin\.sonar\cache
+          key: ${{ runner.os }}-sonar
+
+      - name: SonarCloud Scan
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner --define sonar.cfamily.compile-commands="${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json"
-          
+          .\gradlew.bat sonarqube ^
+            -Dsonar.projectKey=n1ck-b_Labs ^
+            -Dsonar.organization=n1ck-b ^
+            -Dsonar.host.url=https://sonarcloud.io
