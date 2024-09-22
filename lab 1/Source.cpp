@@ -1,4 +1,5 @@
 #include "Header.h"
+
 using namespace std;
 
 int Node::GetYear() const
