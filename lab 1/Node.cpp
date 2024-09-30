@@ -2,23 +2,23 @@
 
 using namespace std;
 
-int Node::GetYear() const
+int Node::getYear() const
 {
 	return yearOfProduction;
 }
-int Node::GetMileage() const
+int Node::getMileage() const
 {
 	return mileage;
 }
-float Node::GetPrice() const
+float Node::getPrice() const
 {
 	return price;
 }
-string Node::GetBrand() const
+string Node::getBrand() const
 {
 	return brand;
 }
-string Node::GetModel() const
+string Node::getModel() const
 {
 	return model;
 }

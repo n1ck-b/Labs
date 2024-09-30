@@ -15,7 +15,7 @@ List::~List()
 		removeByIndex(i);
 	}
 }
-int List::GetNum() const
+int List::getNum() const
 {
 	return num;
 }
@@ -103,7 +103,7 @@ void List::searchByParameter(int choice, int year, int mileage, float priceLow, 
 		cout << "Поиск по году выпуска:\n" << endl;
 		while (temp != nullptr)
 		{
-			if (temp->GetYear() == year)
+			if (temp->getYear() == year)
 			{
 				cout << flag + 1 << "-й автомобиль:" << endl;
 				temp->readObject();
@@ -120,7 +120,7 @@ void List::searchByParameter(int choice, int year, int mileage, float priceLow, 
 		cout << "Поиск по пробегу:\n" << endl;
 		while (temp != nullptr)
 		{
-			if (temp->GetMileage() == mileage)
+			if (temp->getMileage() == mileage)
 			{
 				cout << flag + 1 << "-й автомобиль:" << endl;
 				temp->readObject();
@@ -137,7 +137,7 @@ void List::searchByParameter(int choice, int year, int mileage, float priceLow, 
 		cout << "Поиск по диапозону стоимости:\n" << endl;
 		while (temp != nullptr)
 		{
-			if (priceLow <= temp->GetPrice() && temp->GetPrice() <= priceHigh)
+			if (priceLow <= temp->getPrice() && temp->getPrice() <= priceHigh)
 			{
 				cout << flag + 1 << "-й автомобиль:" << endl;
 				temp->readObject();
@@ -154,7 +154,7 @@ void List::searchByParameter(int choice, int year, int mileage, float priceLow, 
 		cout << "Поиск по марке:\n" << endl;
 		while (temp != nullptr)
 		{
-			if (temp->GetBrand() == brand)
+			if (temp->getBrand() == brand)
 			{
 				cout << flag + 1 << "-й автомобиль:" << endl;
 				temp->readObject();
@@ -171,7 +171,7 @@ void List::searchByParameter(int choice, int year, int mileage, float priceLow, 
 		cout << "Поиск по модели:\n" << endl;
 		while (temp != nullptr)
 		{
-			if (temp->GetModel() == model)
+			if (temp->getModel() == model)
 			{
 				cout << flag + 1 << "-й автомобиль:" << endl;
 				temp->readObject();

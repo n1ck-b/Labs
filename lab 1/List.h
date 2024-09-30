@@ -15,7 +15,7 @@ private:
 public:
 	List();
 	~List();
-	int GetNum() const;
+	int getNum() const;
 	bool isEmpty() const;
 	void push(int year, int mileage, float price, const string& brand, const string& model);
 	void print();

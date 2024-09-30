@@ -9,9 +9,9 @@ class Node : public Car
 {
 public:
 	Node* next;
-	int GetYear() const;
-	int GetMileage() const;
-	float GetPrice() const;
-	string GetBrand() const;
-	string GetModel() const;
+	int getYear() const;
+	int getMileage() const;
+	float getPrice() const;
+	string getBrand() const;
+	string getModel() const;
 };
