@@ -90,7 +90,7 @@ void updateCarInfo(List& list)
 	catalogOutput(list);
 	cout << "\nВведите индекс автомобиля, о котором необходимо изменить информацию" << endl;
 	cin >> catalogIndex;
-	if (catalogIndex > list.GetNum())
+	if (catalogIndex > list.GetNum() + 1)
 	{
 		cout << "Такого индекса не существует" << endl;
 		return;
