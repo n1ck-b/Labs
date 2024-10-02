@@ -30,18 +30,16 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Verify Java installation
+    - name: Install SonarScanner
       run: |
-        java -version
-        echo $JAVA_HOME
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@v1
-      with:
-        entryPoint: sonar-scanner
-        args: |
-         -Dsonar.projectKey=n1ck-b_Labs
-         -Dsonar.organization=n1ck-b
-         -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-4.8.0.2856-linux.zip
+          unzip sonar-scanner-4.8.0.2856-linux.zip
+          export PATH=$PATH:$(pwd)/sonar-scanner-4.8.0.2856-linux/bin
+    - name: Run SonarScanner
+      run: |
+          sonar-scanner -Dsonar.projectKey=n1ck-b_Labs
+                        -Dsonar.organization=n1ck-b
+                        -Dsonar.token=${{ secrets.SONAR_TOKEN }}
     - name: Run sonar-scanner
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
