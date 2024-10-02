@@ -30,6 +30,10 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+    - name: Verify Java installation
+      run: |
+        java -version
+        echo $JAVA_HOME
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@v1
       with:
