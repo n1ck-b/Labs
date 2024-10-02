@@ -91,94 +91,18 @@ void List::searchByParameter(int choice, int year, int mileage, float priceLow, 
 {
 	Node* temp = first;
 	int flag = 0;
-	switch (choice)
+	while(temp != nullptr)
 	{
-	case 1:
-		cout << "ѕоиск по году выпуска:\n" << endl;
-		while (temp != nullptr)
+		if (match(temp, choice, year, mileage, priceLow, priceHigh, brand, model))
 		{
-			if (temp->getYear() == year)
-			{
-				cout << flag + 1 << "-й автомобиль:" << endl;
-				temp->readObject();
-				flag++;
-			}
-			temp = temp->next;
+			cout << flag + 1 << "-й автомобиль:" << endl;
+			temp->readObject();
+			flag++;
 		}
-		if (temp == nullptr && flag == 0)
-		{
-			cout << "јвтомобилей с таким годом выпуска не найдено" << endl;
-		}
-		break;
-	case 2:
-		cout << "ѕоиск по пробегу:\n" << endl;
-		while (temp != nullptr)
-		{
-			if (temp->getMileage() == mileage)
-			{
-				cout << flag + 1 << "-й автомобиль:" << endl;
-				temp->readObject();
-				flag++;
-			}
-			temp = temp->next;
-		}
-		if (temp == nullptr && flag == 0)
-		{
-			cout << "јвтомобилей с таким пробегом не найдено" << endl;
-		}
-		break;
-	case 3:
-		cout << "ѕоиск по диапозону стоимости:\n" << endl;
-		while (temp != nullptr)
-		{
-			if (priceLow <= temp->getPrice() && temp->getPrice() <= priceHigh)
-			{
-				cout << flag + 1 << "-й автомобиль:" << endl;
-				temp->readObject();
-				flag++;
-			}
-			temp = temp->next;
-		}
-		if (temp == nullptr && flag == 0)
-		{
-			cout << "јвтомобилей с таким диапозоном цены не найдено" << endl;
-		}
-		break;
-	case 4:
-		cout << "ѕоиск по марке:\n" << endl;
-		while (temp != nullptr)
-		{
-			if (temp->getBrand() == brand)
-			{
-				cout << flag + 1 << "-й автомобиль:" << endl;
-				temp->readObject();
-				flag++;
-			}
-			temp = temp->next;
-		}
-		if (temp == nullptr && flag == 0)
-		{
-			cout << "јвтомобилей такой марки не найдено" << endl;
-		}
-		break;
-	case 5:
-		cout << "ѕоиск по модели:\n" << endl;
-		while (temp != nullptr)
-		{
-			if (temp->getModel() == model)
-			{
-				cout << flag + 1 << "-й автомобиль:" << endl;
-				temp->readObject();
-				flag++;
-			}
-			temp = temp->next;
-		}
-		if (temp == nullptr && flag == 0)
-		{
-			cout << "јвтомобилей такой модели не найдено" << endl;
-		}
-		break;
-	default:
-		return;
+		temp = temp->next;
+	}
+	if (flag == 0)
+	{
+		cout << "јвтомобилей по данному критерию не найдено" << endl;
 	}
 }

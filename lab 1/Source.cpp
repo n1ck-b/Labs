@@ -180,3 +180,19 @@ void searchForCar(List& list)
 	}
 	list.searchByParameter(choice, year, mileage, priceLow, priceHigh, brand, model);
 }
+bool match(Node* current, int choice, int year, int mileage, float priceLow, float priceHigh, const string& brand, const string& model)
+{
+	switch (choice)
+	{
+	case 1:
+		return current->getYear() == year;
+	case 2:
+		return current->getMileage() == mileage;
+	case 3:
+		return current->getPrice() >= priceLow && current->getPrice() <= priceHigh;
+	case 4:
+		return current->getBrand() == brand;
+	case 5:
+		return current->getModel() == model;
+	}
+}

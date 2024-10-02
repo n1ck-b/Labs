@@ -14,3 +14,4 @@ void catalogOutput(List& list);
 void updateCarInfo(List& list);
 void deleteOneCar(List& list);
 void searchForCar(List& list);
+bool match(Node* current, int choice, int year, int mileage, float priceLow, float priceHigh, const string& brand, const string& model);
