@@ -37,8 +37,8 @@ jobs:
           export PATH=$PATH:$(pwd)/sonar-scanner-4.8.0.2856-linux/bin
     - name: Run SonarScanner
       run: |
-          sonar-scanner -Dsonar.projectKey=n1ck-b_Labs
-                        -Dsonar.organization=n1ck-b
+          sonar-scanner -Dsonar.projectKey=n1ck-b_Labs \
+                        -Dsonar.organization=n1ck-b \
                         -Dsonar.token=${{ secrets.SONAR_TOKEN }}
     - name: Run sonar-scanner
       env:
