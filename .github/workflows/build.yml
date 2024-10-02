@@ -3,7 +3,8 @@ on:
   # a pull request.
   push:
     branches:
-      - master
+      - main
+      - 'lab 1'
   pull_request:
       types: [opened, synchronize, reopened]
 name: Build
