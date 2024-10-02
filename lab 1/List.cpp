@@ -6,7 +6,7 @@ List::~List()
 {
 	for (int i = 0; i < num; i++)
 	{
-		removeByIndex(i);
+		removeByIndex(0);
 	}
 }
 int List::getNum() const
