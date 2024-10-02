@@ -180,7 +180,7 @@ void searchForCar(List& list)
 	}
 	list.searchByParameter(choice, year, mileage, priceLow, priceHigh, brand, model);
 }
-bool match(Node* current, int choice, int year, int mileage, float priceLow, float priceHigh, const string& brand, const string& model)
+bool match(const Node* current, int choice, int year, int mileage, float priceLow, float priceHigh, const string& brand, const string& model)
 {
 	switch (choice)
 	{
@@ -194,5 +194,7 @@ bool match(Node* current, int choice, int year, int mileage, float priceLow, flo
 		return current->getBrand() == brand;
 	case 5:
 		return current->getModel() == model;
+	default:
+		return false;
 	}
 }
