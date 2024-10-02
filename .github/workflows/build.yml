@@ -26,7 +26,7 @@ jobs:
       # build-preparation steps
       # build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} build-command
     - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@v4
+      uses: sonarsource/sonarcloud-github-action@v1
       with:
         projectKey: n1ck-b_Labs
         organization: n1ck-b
