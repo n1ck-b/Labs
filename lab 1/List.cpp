@@ -2,12 +2,6 @@
 
 using namespace std;
 
-List::List()
-{
-	first = nullptr;
-	last = nullptr;
-	num = 0;
-}
 List::~List()
 {
 	for (int i = 0; i < num; i++)

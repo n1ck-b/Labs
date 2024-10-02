@@ -9,11 +9,10 @@ using namespace std;
 class List : public Car
 {
 private:
-	Node* first;
-	Node* last;
-	int num;
+	Node* first = nullptr;
+	Node* last = nullptr;
+	int num = 0;
 public:
-	List();
 	~List();
 	int getNum() const;
 	bool isEmpty() const;
