@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-class List : public Car
+class List
 {
 private:
 	Node* first = nullptr;

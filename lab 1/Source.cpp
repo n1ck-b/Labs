@@ -101,29 +101,29 @@ void updateCarInfo(List& list)
 	case 1:
 		cout << "\n¬ведите год выпуска: ";
 		cin >> year;
-		list[catalogIndex - 1]->setYear(year);
+		list[catalogIndex - 1]->car.setYear(year);
 		break;
 	case 2:
 		cout << "\n¬ведите пробег в км: ";
 		cin >> mileage;
-		list[catalogIndex - 1]->setMileage(mileage);
+		list[catalogIndex - 1]->car.setMileage(mileage);
 		break;
 	case 3:
 		cout << "\n¬ведите стоимость в $: ";
 		cin >> price;
-		list[catalogIndex - 1]->setPrice(price);
+		list[catalogIndex - 1]->car.setPrice(price);
 		break;
 	case 4:
 		cout << "\n¬ведите марку: ";
 		cin.ignore();
 		getline(cin, brand);
-		list[catalogIndex - 1]->setBrand(brand);
+		list[catalogIndex - 1]->car.setBrand(brand);
 		break;
 	case 5:
 		cout << "\n¬ведите модель: ";
 		cin.ignore();
 		getline(cin, model);
-		list[catalogIndex - 1]->setModel(model);
+		list[catalogIndex - 1]->car.setModel(model);
 		break;
 	default:
 		return;
@@ -185,15 +185,15 @@ bool match(const Node* current, int choice, int year, int mileage, float priceLo
 	switch (choice)
 	{
 	case 1:
-		return current->getYear() == year;
+		return current->car.getYear() == year;
 	case 2:
-		return current->getMileage() == mileage;
+		return current->car.getMile() == mileage;
 	case 3:
-		return current->getPrice() >= priceLow && current->getPrice() <= priceHigh;
+		return current->car.getPrice() >= priceLow && current->car.getPrice() <= priceHigh;
 	case 4:
-		return current->getBrand() == brand;
+		return current->car.getBrand() == brand;
 	case 5:
-		return current->getModel() == model;
+		return current->car.getModel() == model;
 	default:
 		return false;
 	}

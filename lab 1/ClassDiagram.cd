@@ -3,14 +3,14 @@
   <Class Name="Car">
     <Position X="9" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgEJAAAAAAAAAAAAAAAAAQIAAAEAAAAACAAAAAAKQAg=</HashCode>
+      <HashCode>AgMJAIAAAAAAAAAAAAAAARIAAAEQAAAACAAAAAQKQAg=</HashCode>
       <FileName>Car.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="List">
     <Position X="2" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAACAAAAAAAAAAgAEAAAAAAAEAAAAAAAAoIAAAQgI=</HashCode>
+      <HashCode>AAQAACAAAAAAAAAAgAEAAAAAAAEAACAAAAAIIAAAQgA=</HashCode>
       <FileName>List.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -21,11 +21,12 @@
   <Class Name="Node">
     <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAAIAAEAAAAAAAAAAAAAAAFAAAAAIAAAA=</HashCode>
+      <HashCode>AAAABIAAgAAAAAAAAAAAABAAAAAQAAAAAAAAAAYAAAA=</HashCode>
       <FileName>Node.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="next" />
+      <Field Name="car" />
     </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -22,12 +22,12 @@ void List::push(int year, int mileage, float price, const string& brand, const s
 	{
 		first = temp;
 		last = temp;
-		temp->setObject(year, mileage, price, brand, model);
+		temp->car.setObject(year, mileage, price, brand, model);
 		return;
 	}
 	last->next = temp;
 	last = temp;
-	last->setObject(year, mileage, price, brand, model);
+	last->car.setObject(year, mileage, price, brand, model);
 	num++;
 }
 void List::print()
@@ -37,7 +37,7 @@ void List::print()
 	while (temp != nullptr)
 	{
 		cout << "\n" << i + 1 << "-й автомобиль:" << endl;
-		temp->readObject();
+		temp->car.readObject();
 		temp = temp->next;
 		i++;
 	}
@@ -94,7 +94,7 @@ void List::searchByParameter(int choice, int year, int mileage, float priceLow, 
 		if (match(temp, choice, year, mileage, priceLow, priceHigh, brand, model))
 		{
 			cout << flag + 1 << "-й автомобиль:" << endl;
-			temp->readObject();
+			temp->car.readObject();
 			flag++;
 		}
 		temp = temp->next;

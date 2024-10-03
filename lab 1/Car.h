@@ -5,7 +5,7 @@
 
 class Car
 {
-protected:
+private:
 	int yearOfProduction;
 	int mileage;
 	float price;
@@ -19,4 +19,9 @@ public:
 	void setModel(const std::string& md);
 	void setObject(int year, int mile, float pr, const std::string& br, const std::string& md);
 	void readObject() const;
+	int getYear() const;
+	int getMile() const;
+	float getPrice() const;
+	std::string getBrand() const;
+	std::string getModel() const;
 };

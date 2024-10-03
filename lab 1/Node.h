@@ -3,9 +3,10 @@
 #include <iostream>
 #include <string>
 
-class Node : public Car
+class Node
 {
 public:
+	Car car;
 	Node* next;
 	int getYear() const;
 	int getMileage() const;

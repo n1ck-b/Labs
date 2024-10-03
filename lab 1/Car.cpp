@@ -36,3 +36,23 @@ void Car::readObject() const
 	cout << "  Марка: " << brand << endl;
 	cout << "  Модель: " << model << endl;
 }
+int Car::getYear() const
+{
+	return yearOfProduction;
+}
+int Car::getMile() const
+{
+	return mileage;
+}
+float Car::getPrice() const
+{
+	return price;
+}
+string Car::getBrand() const
+{
+	return brand;
+}
+string Car::getModel() const
+{
+	return model;
+}
