@@ -19,15 +19,9 @@ jobs:
           fetch-depth: 0
       - name: Install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v3
-      - name: Configure CMake
+      - name: Compile project
         run: |
-          mkdir build
-          cd build
-          cmake ..
-      - name: Build project
-        run: |
-          cd build
-          build-wrapper-win-x86-64 --out-dir "${{ env.BUILD_WRAPPER_OUT_DIR }}" cmake --build .
+          build-wrapper-win-x86-64 --out-dir "${{ env.BUILD_WRAPPER_OUT_DIR }}" gcc -o my_program main.cpp
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
