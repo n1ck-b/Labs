@@ -3,8 +3,6 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Node : public Car
 {
 public:
@@ -12,6 +10,6 @@ public:
 	int getYear() const;
 	int getMileage() const;
 	float getPrice() const;
-	string getBrand() const;
-	string getModel() const;
+	std::string getBrand() const;
+	std::string getModel() const;
 };

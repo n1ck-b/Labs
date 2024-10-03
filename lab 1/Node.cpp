@@ -1,7 +1,5 @@
 #include "Header.h"
 
-using namespace std;
-
 int Node::getYear() const
 {
 	return yearOfProduction;

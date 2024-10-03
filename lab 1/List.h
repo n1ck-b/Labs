@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class List : public Car
 {
 private:
@@ -16,9 +14,9 @@ public:
 	~List();
 	int getNum() const;
 	bool isEmpty() const;
-	void push(int year, int mileage, float price, const string& brand, const string& model);
+	void push(int year, int mileage, float price, const std::string& brand, const std::string& model);
 	void print();
 	void removeByIndex(int index);
 	Node* operator [] (int index);
-	void searchByParameter(int choice, int year, int mileage, float priceLow, float priceHigh, const string& brand, const string& model);
+	void searchByParameter(int choice, int year, int mileage, float priceLow, float priceHigh, const std::string& brand, const std::string& model);
 };

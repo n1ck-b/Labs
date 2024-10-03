@@ -1,7 +1,5 @@
 #include "Header.h"
 
-using namespace std;
-
 void Car::setYear(int year)
 {
 	yearOfProduction = year;

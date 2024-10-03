@@ -1,7 +1,5 @@
 #include "Header.h"
 
-using namespace std;
-
 List::~List()
 {
 	for (int i = 0; i < num; i++)
