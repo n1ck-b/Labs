@@ -23,5 +23,13 @@ public:
 	float getPrice() const;
 	std::string getBrand() const;
 	std::string getModel() const;
-	friend std::ostream& operator << (std::ostream& os, const Car& car);
+	friend std::ostream& operator << (std::ostream& os, const Car& car)
+	{
+		os << "  Год выпуска: " << car.yearOfProduction << std::endl;
+		os << "  Пробег в км: " << car.mileage << std::endl;
+		os << "  Стоимость в $: " << car.price << std::endl;
+		os << "  Марка: " << car.brand << std::endl;
+		os << "  Модель: " << car.model << std::endl;
+		return os;
+	}
 };

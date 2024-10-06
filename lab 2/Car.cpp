@@ -48,12 +48,3 @@ string Car::getModel() const
 {
 	return model;
 }
-ostream& operator << (ostream& os, const Car& car)
-{
-	os << "  Год выпуска: " << car.yearOfProduction << endl;
-	os << "  Пробег в км: " << car.mileage << endl;
-	os << "  Стоимость в $: " << car.price << endl;
-	os << "  Марка: " << car.brand << endl;
-	os << "  Модель: " << car.model << endl;
-	return os;
-}
