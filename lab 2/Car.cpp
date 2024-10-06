@@ -28,14 +28,6 @@ void Car::setObject(int year, int mile, float pr, const string& br, const string
 	brand = br;
 	model = md;
 }
-void Car::readObject() const
-{
-	cout << "  Год выпуска: " << yearOfProduction << endl;
-	cout << "  Пробег в км: " << mileage << endl;
-	cout << "  Стоимость в $: " << price << endl;
-	cout << "  Марка: " << brand << endl;
-	cout << "  Модель: " << model << endl;
-}
 int Car::getYear() const
 {
 	return yearOfProduction;
@@ -55,4 +47,13 @@ string Car::getBrand() const
 string Car::getModel() const
 {
 	return model;
+}
+ostream& operator << (ostream& os, const Car& car)
+{
+	os << "  Год выпуска: " << car.yearOfProduction << endl;
+	os << "  Пробег в км: " << car.mileage << endl;
+	os << "  Стоимость в $: " << car.price << endl;
+	os << "  Марка: " << car.brand << endl;
+	os << "  Модель: " << car.model << endl;
+	return os;
 }

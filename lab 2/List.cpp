@@ -2,7 +2,7 @@
 
 List::~List()
 {
-	for (int i = 0; i < num; i++)
+	while(!isEmpty())
 	{
 		removeByIndex(0);
 	}
@@ -23,6 +23,7 @@ void List::push(int year, int mileage, float price, const string& brand, const s
 		first = temp;
 		last = temp;
 		temp->car.setObject(year, mileage, price, brand, model);
+		num++;
 		return;
 	}
 	last->next = temp;
@@ -37,7 +38,7 @@ void List::print()
 	while (temp != nullptr)
 	{
 		cout << "\n" << i + 1 << "-й автомобиль:" << endl;
-		temp->car.readObject();
+		cout << temp->car;
 		temp = temp->next;
 		i++;
 	}
@@ -94,13 +95,13 @@ void List::searchByParameter(int choice, int year, int mileage, float priceLow, 
 		if (match(temp, choice, year, mileage, priceLow, priceHigh, brand, model))
 		{
 			cout << flag + 1 << "-й автомобиль:" << endl;
-			temp->car.readObject();
+			cout << temp->car;
 			flag++;
 		}
 		temp = temp->next;
 	}
 	if (flag == 0)
 	{
-		cout << "Автомобилей по данному критерию не найдено" << endl;
+		cout << "\n\033[31mАвтомобилей по данному критерию не найдено\033[0m" << endl;
 	}
 }

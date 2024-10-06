@@ -14,9 +14,10 @@ public:
 	~List();
 	int getNum() const;
 	bool isEmpty() const;
-	void push(int year, int mileage, float price, const std::string& brand, const std::string& model);
+	void push(int year = 0, int mileage = 0, float price = 0, const std::string& brand = " ", const std::string& model = " ");
 	void print();
 	void removeByIndex(int index);
 	Node* operator [] (int index);
 	void searchByParameter(int choice, int year, int mileage, float priceLow, float priceHigh, const std::string& brand, const std::string& model);
+	void setNum(int n);
 };

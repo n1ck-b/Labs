@@ -6,6 +6,7 @@ int main()
 {
 	setlocale(LC_ALL, "ru");
 	List list;
+	readFromFile(list);
 	int mainMenuChoice = mainMenu();
 	while (true)
 	{
@@ -25,6 +26,9 @@ int main()
 			break;
 		case 5:
 			searchForCar(list);
+			break;
+		case 6:
+			compareCars(list);
 			break;
 		default:
 			return 0;

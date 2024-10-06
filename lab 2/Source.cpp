@@ -8,12 +8,12 @@ int mainMenu()
 	int choice;
 	while (true)
 	{
-		cout << "\nВозможные действия\n1. Добавить новый автомобиль\n2. Вывести каталог\n3. Изменить информацию об автомобиле\n4. Удалить автомобиль из каталога\n5. Найти автомобиль по параметру\n6. Завершить выполнение\n" << endl;
-		cout << "Выберите пункт меню: ";
+		cout << "\nВозможные действия\n1. Добавить новый автомобиль\n2. Вывести каталог\n3. Изменить информацию об автомобиле\n4. Удалить автомобиль из каталога\n5. Найти автомобиль по параметру\n6. Сравнить 2 автомобиля\n7. Завершить выполнение" << endl;
+		cout << "\nВыберите пункт меню: ";
 		cin >> choice;
-		if (cin.fail() || choice <= 0 || choice > 6)
+		if (cin.fail() || choice <= 0 || choice > 7)
 		{
-			cout << "\nНекорректный ввод" << endl;
+			cout << "\n\033[31mНекорректный ввод\033[0m" << endl;
 			cin.clear();
 			cin.ignore(1000, '\n');
 		}
@@ -30,11 +30,11 @@ int subMenu()
 	{
 		cout << "Выберите параметр для изменения/поиска:" << endl;
 		cout << "  1. Год выпуска \n  2. Пробег\n  3. Стоимость в $\n  4. Марка\n  5. Модель" << endl;
-		cout << "Введите пункт меню" << endl;
+		cout << "\nВведите пункт меню" << endl;
 		cin >> choice;
 		if (cin.fail() || choice <= 0 || choice > 5)
 		{
-			cout << "\nНекорректный ввод" << endl;
+			cout << "\n\033[31mНекорректный ввод\033[0m" << endl;
 			cin.clear();
 			cin.ignore(1000, '\n');
 		}
@@ -43,6 +43,20 @@ int subMenu()
 			return choice;
 		}
 	}
+}
+void writeToFile(List& list)
+{
+	ofstream file;
+	file.open("Cars.txt", ofstream::app);
+	if (!file.is_open())
+	{
+		cout << "Не удалось открыть файл с данными" << endl;
+		return;
+	}
+	int index = list.getNum() - 1;
+	Car car = list[index]->car;
+	file << car.getYear() << "\t" << car.getMile() << "\t" << car.getPrice() << "\t" << car.getBrand() << "\t" << car.getModel() << "\n";
+	file.close();
 }
 void addOneCar(List& list)
 {
@@ -63,12 +77,13 @@ void addOneCar(List& list)
 	cout << "Введите название модели: ";
 	getline(cin, model);
 	list.push(year, mileage, price, brand, model);
+	writeToFile(list);
 }
 void catalogOutput(List& list)
 {
 	if (list.isEmpty() == 1)
 	{
-		cout << "\nАвтомобилей в каталоге нет" << endl;
+		cout << "\n\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
 		return;
 	}
 	list.print();
@@ -77,7 +92,7 @@ void updateCarInfo(List& list)
 {
 	if (list.isEmpty() == 1)
 	{
-		cout << "Автомобилей в каталоге нет" << endl;
+		cout << "\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
 		return;
 	}
 	int catalogIndex;
@@ -90,9 +105,9 @@ void updateCarInfo(List& list)
 	catalogOutput(list);
 	cout << "\nВведите индекс автомобиля, о котором необходимо изменить информацию" << endl;
 	cin >> catalogIndex;
-	if (catalogIndex > list.getNum() + 1)
+	if (catalogIndex > list.getNum())
 	{
-		cout << "Такого индекса не существует" << endl;
+		cout << "\033[31mТакого индекса не существует\033[0m" << endl;
 		return;
 	}
 	choice = subMenu();
@@ -128,22 +143,51 @@ void updateCarInfo(List& list)
 	default:
 		return;
 	}
+	rewriteToFile(list);
+}
+void rewriteToFile(List& list)
+{
+	ofstream file;
+	file.open("Cars.txt");
+	if (!file.is_open())
+	{
+		cout << "Не удалось открыть файл с данными" << endl;
+		return;
+	}
+	Car car;
+	for (int i = 0; i < list.getNum(); i++)
+	{
+		car = list[i]->car;
+		file << car.getYear() << "\t" << car.getMile() << "\t" << car.getPrice() << "\t" << car.getBrand() << "\t" << car.getModel() << "\n";
+	}
+	file.close();
 }
 void deleteOneCar(List& list)
 {
-	if (list.getNum() == 0)
+	if (list.isEmpty() == 1)
 	{
-		cout << "Автомобилей в каталоге нет" << endl;
+		cout << "\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
 		return;
 	}
 	int catalogIndex;
 	catalogOutput(list);
 	cout << "\nВведите индекс автомобиля, который необходимо удалить из каталога" << endl;
 	cin >> catalogIndex;
+	if (catalogIndex > list.getNum())
+	{
+		cout << "\033[31mТакого индекса не существует\033[0m" << endl;
+		return;
+	}
 	list.removeByIndex(catalogIndex - 1);
+	rewriteToFile(list);
 }
 void searchForCar(List& list)
 {
+	if (list.isEmpty() == 1)
+	{
+		cout << "\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
+		return;
+	}
 	int year = 0;
 	int mileage = 0;
 	float priceLow = 0;
@@ -197,4 +241,124 @@ bool match(const Node* current, int choice, int year, int mileage, float priceLo
 	default:
 		return false;
 	}
+}
+void readFromFile(List& list)
+{
+	ifstream file;
+	file.open("Cars.txt", ifstream::app);
+	if (!file.is_open())
+	{
+		cout << "Не удалось открыть файл с данными" << endl;
+		return;
+	}
+	if (file.peek() == EOF)
+	{
+		cout << "\033[33mФайл пуст или же не был найден, поэтому создан новый\033[0m" << endl;
+		file.close();
+		return;
+	}
+	int year;
+	int mile;
+	float price;
+	string brand;
+	string model;
+	while (file >> year >> mile >> price)
+	{
+		file.ignore(1, '\t');
+		getline(file, brand, '\t');
+		getline(file, model);
+		list.push(year, mile, price, brand, model);
+	}
+	file.close();
+}
+void compareAndPrintForYear(int a, int b)
+{
+	cout << "Год выпуска: ";
+	if (a > b)
+	{
+		cout.width(12);
+		cout << "\033[32m" << a;
+		cout.width(27);
+		cout << "\033[31m" << b << "\033[0m" << endl;
+	}
+	else
+	{
+		cout.width(12);
+		cout << "\033[31m" << a;
+		cout.width(27);
+		cout << "\033[32m" << b << "\033[0m" << endl;
+	}
+}
+void compareAndPrintForMile(int a, int b)
+{
+	cout << "Пробег:     ";
+	if (a < b)
+	{
+		cout.width(12);
+		cout << "\033[32m" << a;
+		cout.width(27);
+		cout << "\033[31m" << b << "\033[0m" << endl;
+	}
+	else
+	{
+		cout.width(12);
+		cout << "\033[31m" << a;
+		cout.width(27);
+		cout << "\033[32m" << b << "\033[0m" << endl;
+	}
+}
+void compareAndPrintForPrice(float a, float b)
+{
+	cout << "Стоимость $: ";
+	if (a < b)
+	{
+		cout.width(12);
+		cout << "\033[32m" << a;
+		cout.width(27);
+		cout << "\033[31m" << b << "\033[0m" << endl;
+	}
+	else
+	{
+		cout.width(12);
+		cout << "\033[31m" << a;
+		cout.width(27);
+		cout << "\033[32m" << b << "\033[0m" << endl;
+	}
+}
+void operator == (const Node& car1, const Node& car2)
+{
+	cout << "Результат сравнения:\n" << endl;
+	cout << "\t\t1-ый автомобиль\t\t  2-ой автомобиль" << endl;
+	compareAndPrintForYear(car1.car.getYear(), car2.car.getYear());
+	compareAndPrintForMile(car1.car.getMile(), car2.car.getMile());
+	compareAndPrintForPrice(car1.car.getPrice(), car2.car.getPrice());
+	cout << "Марка:       ";
+	cout.width(12);
+	cout << car1.car.getBrand();
+	cout.width(25);
+	cout << car2.car.getBrand() << endl;
+	cout << "Модель:      ";
+	cout.width(12);
+	cout << car1.car.getModel();
+	cout.width(25);
+	cout << car2.car.getModel() << endl;
+}
+void compareCars(List& list)
+{
+	if (list.isEmpty() == 1)
+	{
+		cout << "\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
+		return;
+	}
+	catalogOutput(list);
+	int index1;
+	int index2;
+	cout << "\nВведите индексы автомобилей, которые нужно сравнить" << endl;
+	cin >> index1 >> index2;
+	if (index1 > list.getNum() || index2 > list.getNum() || index1 == index2)
+	{
+		cout << "\033[31mВведен неверный индекс\033[0m" << endl;
+		return;
+	}
+	*list[index1 - 1] == *list[index2 - 1];
 }
