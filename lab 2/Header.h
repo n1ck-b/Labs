@@ -15,7 +15,7 @@ void catalogOutput(List& list);
 void updateCarInfo(List& list);
 void deleteOneCar(List& list);
 void searchForCar(List& list);
-bool match(const Node* current, int choice, int year, int mileage, float priceLow, float priceHigh, const string& brand, const string& model);
+bool matchCars(const Car& current, int choice, const int* year, const int* mileage, const float* price, const string& brand, const string& model);
 void readFromFile(List& list);
 void writeToFile(List& list);
 void rewriteToFile(List& list);

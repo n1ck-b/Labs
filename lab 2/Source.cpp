@@ -188,26 +188,25 @@ void searchForCar(List& list)
 		cout << "\033[31mјвтомобилей в каталоге нет\033[0m" << endl;
 		return;
 	}
-	int year = 0;
-	int mileage = 0;
-	float priceLow = 0;
-	float priceHigh = 0;
+	int year[2];
+	int mileage[2];
+	float price[2];
 	string brand;
 	string model;
 	int choice = subMenu();
 	switch (choice)
 	{
 	case 1:
-		cout << "¬ведите год выпуска автомобил€: ";
-		cin >> year;
+		cout << "¬ведите год выпуска автомобил€ (от и до): ";
+		cin >> year[0] >> year[1];
 		break;
 	case 2:
-		cout << "¬ведите пробег в км: ";
-		cin >> mileage;
+		cout << "¬ведите пробег в км (от и до): ";
+		cin >> mileage[0] >> mileage[1];
 		break;
 	case 3:
 		cout << "¬ведите диапозон стоимости $(от и до): ";
-		cin >> priceLow >> priceHigh;
+		cin >> price[0] >> price[1];
 		break;
 	case 4:
 		cout << "¬ведите название марки: ";
@@ -222,22 +221,22 @@ void searchForCar(List& list)
 	default:
 		return;
 	}
-	list.searchByParameter(choice, year, mileage, priceLow, priceHigh, brand, model);
+	list.searchByParameter(choice, year, mileage, price, brand, model);
 }
-bool match(const Node* current, int choice, int year, int mileage, float priceLow, float priceHigh, const string& brand, const string& model)
+bool matchCars(const Car& current, int choice, const int* year, const int* mileage, const float* price, const string& brand, const string& model)
 {
 	switch (choice)
 	{
 	case 1:
-		return current->car.getYear() == year;
+		return current.getYear() >= year[0] && current.getYear() <= year[1];
 	case 2:
-		return current->car.getMile() == mileage;
+		return current.getMile() >= mileage[0] && current.getMile() <= mileage[1];
 	case 3:
-		return current->car.getPrice() >= priceLow && current->car.getPrice() <= priceHigh;
+		return current.getPrice() >= price[0] && current.getPrice() <= price[1];
 	case 4:
-		return current->car.getBrand() == brand;
+		return current.getBrand() == brand;
 	case 5:
-		return current->car.getModel() == model;
+		return current.getModel() == model;
 	default:
 		return false;
 	}

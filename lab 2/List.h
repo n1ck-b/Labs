@@ -18,5 +18,5 @@ public:
 	void print();
 	void removeByIndex(int index);
 	Node* operator [] (int index);
-	void searchByParameter(int choice, int year, int mileage, float priceLow, float priceHigh, const std::string& brand, const std::string& model);
+	void searchByParameter(int choice, const int* year, const int* mileage, const float* price, const std::string& brand, const std::string& model);
 };

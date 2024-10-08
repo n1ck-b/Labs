@@ -86,13 +86,13 @@ Node* List::operator[] (const int index)
 	}
 	return temp;
 }
-void List::searchByParameter(int choice, int year, int mileage, float priceLow, float priceHigh, const string& brand, const string& model)
+void List::searchByParameter(int choice, const int* year, const int* mileage, const float* price, const string& brand, const string& model)
 {
 	Node* temp = first;
 	int flag = 0;
 	while (temp != nullptr)
 	{
-		if (match(temp, choice, year, mileage, priceLow, priceHigh, brand, model))
+		if (matchCars(temp->car, choice, year, mileage, price, brand, model))
 		{
 			cout << flag + 1 << "-й автомобиль:" << endl;
 			cout << temp->car;
