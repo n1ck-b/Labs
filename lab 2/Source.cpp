@@ -325,23 +325,23 @@ void compareAndPrintForPrice(float a, float b)
 		cout << "\033[32m" << b << "\033[0m" << endl;
 	}
 }
-void operator == (const Node& car1, const Node& car2)
+void compareCarsToParameters(const Node& car1, const Node& car2)
 {
-	cout << "Результат сравнения:\n" << endl;
-	cout << "\t\t1-ый автомобиль\t\t  2-ой автомобиль" << endl;
+	std::cout << "Результат сравнения:\n" << std::endl;
+	std::cout << "\t\t1-ый автомобиль\t\t  2-ой автомобиль" << std::endl;
 	compareAndPrintForYear(car1.car.getYear(), car2.car.getYear());
 	compareAndPrintForMile(car1.car.getMile(), car2.car.getMile());
 	compareAndPrintForPrice(car1.car.getPrice(), car2.car.getPrice());
-	cout << "Марка:       ";
-	cout.width(12);
-	cout << car1.car.getBrand();
-	cout.width(25);
-	cout << car2.car.getBrand() << endl;
-	cout << "Модель:      ";
-	cout.width(12);
-	cout << car1.car.getModel();
-	cout.width(25);
-	cout << car2.car.getModel() << endl;
+	std::cout << "Марка:       ";
+	std::cout.width(12);
+	std::cout << car1.car.getBrand();
+	std::cout.width(25);
+	std::cout << car2.car.getBrand() << std::endl;
+	std::cout << "Модель:      ";
+	std::cout.width(12);
+	std::cout << car1.car.getModel();
+	std::cout.width(25);
+	std::cout << car2.car.getModel() << std::endl;
 }
 void compareCars(List& list)
 {
@@ -360,5 +360,11 @@ void compareCars(List& list)
 		cout << "\033[31mВведен неверный индекс\033[0m" << endl;
 		return;
 	}
-	*list[index1 - 1] == *list[index2 - 1];
+	if (*list[index1 - 1] == *list[index2 - 1] == 1)
+		cout << "Машины совпадают по проверяемым параметром" << endl;
+	else
+	{
+		cout << "Машины не совпадают" << endl;
+		compareCarsToParameters(*list[index1 - 1], *list[index2 - 1]);
+	}
 }

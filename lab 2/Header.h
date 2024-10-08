@@ -19,5 +19,7 @@ bool match(const Node* current, int choice, int year, int mileage, float priceLo
 void readFromFile(List& list);
 void writeToFile(List& list);
 void rewriteToFile(List& list);
+void compareAndPrintForPrice(float a, float b);
+void compareAndPrintForMile(int a, int b);
+void compareAndPrintForYear(int a, int b);
 void compareCars(List& list);
-void operator == (const Node& car1, const Node& car2);
