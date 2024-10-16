@@ -14,7 +14,7 @@
 
 ## Технологии
 ### **Язык программирования:** C++
-### **База данных:** MySQL
+### **База данных:** SQLite
 ### **Интерфейс:** Qt
 # SonarCloud
 https://sonarcloud.io/project/overview?id=n1ck-b_Labs
