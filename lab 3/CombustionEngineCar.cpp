@@ -6,7 +6,7 @@ void CombustionEngineCar::addCar(int year, int mileage, float price, const std::
 	int error = sqlite3_open("Cars.db", &dataBase);
 	if (error)
 	{
-		std::cout << "\033[1;31mНе удалось открыть базу данных: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось открыть базу данных: " << sqlite3_errmsg(dataBase) << std::endl;
 		return;
 	}
 	sqlite3_stmt* stmt;
@@ -15,7 +15,7 @@ void CombustionEngineCar::addCar(int year, int mileage, float price, const std::
 	error = sqlite3_prepare_v2(dataBase, SQL, -1, &stmt, nullptr);
 	if (error != SQLITE_OK)
 	{
-		std::cout << "\033[1;31mНе удалось подготовить SQL запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось подготовить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 		sqlite3_close(dataBase);
 		return;
 	}
@@ -28,7 +28,7 @@ void CombustionEngineCar::addCar(int year, int mileage, float price, const std::
 	error = sqlite3_step(stmt);
 	if (error != SQLITE_DONE)
 	{
-		std::cout << "\033[1;31mНе удалось выполнить SQL запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось выполнить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 	}
 	sqlite3_finalize(stmt);
 	sqlite3_close(dataBase);
@@ -39,7 +39,7 @@ void CombustionEngineCar::print()
 	int error = sqlite3_open("Cars.db", &dataBase);
 	if (error)
 	{
-		std::cout << "\033[1;31mНе удалось открыть базу данных: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось открыть базу данных: " << sqlite3_errmsg(dataBase) << std::endl;
 		return;
 	}
 	const char* sql = "SELECT year_of_production, mileage, price, brand, model, fuel_tank_capacity "
@@ -48,14 +48,14 @@ void CombustionEngineCar::print()
 	error = sqlite3_prepare_v2(dataBase, sql, -1, &stmt, nullptr);
 	if (error != SQLITE_OK)
 	{
-		std::cout << "\033[1;31mНе удалось выполнить запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось выполнить запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 		return;
 	}
 	int i = 1;
-	std::cout << "\n\033[33mАвтомобили с ДВС:\033[0m" << std::endl;
+	std::cout << "\n\033[33mАвтомобили с ДВС:" << std::endl;
 	while (sqlite3_step(stmt) == SQLITE_ROW)
 	{
-		std::cout << "\n\033[97m" << i << "-й автомобиль:\033[0m\n" << std::endl;
+		std::cout << "\n" << i << "-й автомобиль:\n" << std::endl;
 		std::cout << "  Год выпуска: " << sqlite3_column_int(stmt, 0) << std::endl;
 		std::cout << "  Пробег в км: " << sqlite3_column_int(stmt, 1) << std::endl;
 		std::cout << "  Стоимость в $: " << sqlite3_column_double(stmt, 2) << std::endl;
@@ -75,7 +75,7 @@ void CombustionEngineCar::updateCar(int index, int year, int mileage, float pric
 	int error = sqlite3_open("Cars.db", &dataBase);
 	if (error)
 	{
-		std::cout << "\033[1;31mНе удалось открыть базу данных: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось открыть базу данных: " << sqlite3_errmsg(dataBase) << std::endl;
 		return;
 	}
 	const char* SQL = "UPDATE combustion_cars SET year_of_production = ?, mileage = ?, price = ?, brand = ?, model = ?, fuel_tank_capacity = ? WHERE id = ?;";
@@ -83,7 +83,7 @@ void CombustionEngineCar::updateCar(int index, int year, int mileage, float pric
 	error = sqlite3_prepare_v2(dataBase, SQL, -1, &stmt, nullptr);
 	if (error != SQLITE_OK)
 	{
-		std::cout << "\033[1;31mНе удалось подготовить SQL запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось подготовить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 		sqlite3_close(dataBase);
 		return;
 	}
@@ -97,7 +97,7 @@ void CombustionEngineCar::updateCar(int index, int year, int mileage, float pric
 	error = sqlite3_step(stmt);
 	if (error != SQLITE_DONE)
 	{
-		std::cout << "\033[1;31mНе удалось выполнить SQL запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось выполнить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 	}
 	sqlite3_finalize(stmt);
 	sqlite3_close(dataBase);
@@ -110,7 +110,7 @@ void CombustionEngineCar::deleteCar(int index) const
 	int error = sqlite3_open("Cars.db", &dataBase);
 	if (error)
 	{
-		std::cout << "\033[1;31mНе удалось открыть базу данных: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось открыть базу данных: " << sqlite3_errmsg(dataBase) << std::endl;
 		return;
 	}
 	sqlite3_stmt* stmt;
@@ -118,7 +118,7 @@ void CombustionEngineCar::deleteCar(int index) const
 	error = sqlite3_prepare_v2(dataBase, SQL, -1, &stmt, nullptr);
 	if (error != SQLITE_OK)
 	{
-		std::cout << "\033[1;31mНе удалось подготовить SQL запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось подготовить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 		sqlite3_close(dataBase);
 		return;
 	}
@@ -126,7 +126,7 @@ void CombustionEngineCar::deleteCar(int index) const
 	error = sqlite3_step(stmt);
 	if (error != SQLITE_DONE)
 	{
-		std::cout << "\033[1;31mНе удалось выполнить SQL запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось выполнить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 	}
 	sqlite3_finalize(stmt);
 	sqlite3_close(dataBase);
@@ -139,7 +139,7 @@ void CombustionEngineCar::getCar(int index, int& year, int& mileage, float& pric
 	int error = sqlite3_open("Cars.db", &dataBase);
 	if (error)
 	{
-		std::cout << "\033[1;31mНе удалось открыть базу данных: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось открыть базу данных: " << sqlite3_errmsg(dataBase) << std::endl;
 		return;
 	}
 	sqlite3_stmt* stmt;
@@ -147,7 +147,7 @@ void CombustionEngineCar::getCar(int index, int& year, int& mileage, float& pric
 	error = sqlite3_prepare_v2(dataBase, SQL, -1, &stmt, nullptr);
 	if (error != SQLITE_OK)
 	{
-		std::cout << "\033[1;31mНе удалось подготовить SQL запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось подготовить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 		sqlite3_close(dataBase);
 		return;
 	}
@@ -155,7 +155,7 @@ void CombustionEngineCar::getCar(int index, int& year, int& mileage, float& pric
 	error = sqlite3_step(stmt);
 	if (error != SQLITE_DONE)
 	{
-		std::cout << "\033[1;31mНе удалось выполнить SQL запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось выполнить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 	}
 	year = sqlite3_column_int(stmt, 0);
 	mileage = sqlite3_column_int(stmt, 1);

@@ -25,7 +25,7 @@ int Car::findIDinDB(int index, const string& tableName) const
 	int error = sqlite3_open("Cars.db", &dataBase);
 	if (error)
 	{
-		std::cout << "\033[1;31mНе удалось открыть базу данных: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось открыть базу данных: " << sqlite3_errmsg(dataBase) << std::endl;
 		return 0;
 	}
 	sqlite3_stmt* stmt;
@@ -34,7 +34,7 @@ int Car::findIDinDB(int index, const string& tableName) const
 	error = sqlite3_prepare_v2(dataBase, SQL, -1, &stmt, nullptr);
 	if (error != SQLITE_OK)
 	{
-		std::cout << "\033[1;31mНе удалось выполнить запрос: \033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось выполнить запрос: " << sqlite3_errmsg(dataBase) << std::endl;
 		return 0;
 	}
 	for (int i = 0; i < index; i++)

@@ -13,7 +13,7 @@ int mainMenu()
 		cin >> choice;
 		if (cin.fail() || choice <= 0 || choice > 7)
 		{
-			cout << "\n\033[31mНекорректный ввод\033[0m" << endl;
+			cout << "\nНекорректный ввод" << endl;
 			cin.clear();
 			cin.ignore(1000, '\n');
 		}
@@ -34,7 +34,7 @@ int subMenu()
 		cin >> choice;
 		if (cin.fail() || choice <= 0 || choice > 8)
 		{
-			cout << "\n\033[31mНекорректный ввод\033[0m" << endl;
+			cout << "\nНекорректный ввод" << endl;
 			cin.clear();
 			cin.ignore(1000, '\n');
 		}
@@ -130,7 +130,7 @@ void catalogOutput()
 	dbRowsCount(hybridCount, combustionCount, electricCount);
 	if (electricCount == 0 && hybridCount == 0 && combustionCount == 0)
 	{
-		cout << "\n\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
+		cout << "\nАвтомобилей в каталоге нет" << endl;
 		return;
 	}
 	CombustionEngineCar combustionCar;
@@ -147,26 +147,26 @@ void checkCatalogIndex(int type, int catalogIndex, int electricCount, int combus
 	case 1:
 		if (catalogIndex > electricCount || catalogIndex <= 0)
 		{
-			cout << "\033[31mТакого индекса не существует\033[0m" << endl;
+			cout << "Такого индекса не существует" << endl;
 			return;
 		}
 		break;
 	case 2:
 		if (catalogIndex > combustionCount || catalogIndex <= 0)
 		{
-			cout << "\033[31mТакого индекса не существует\033[0m" << endl;
+			cout << "Такого индекса не существует" << endl;
 			return;
 		}
 		break;
 	case 3:
 		if (catalogIndex > hybridCount || catalogIndex <= 0)
 		{
-			cout << "\033[31mТакого индекса не существует\033[0m" << endl;
+			cout << "Такого индекса не существует" << endl;
 			return;
 		}
 		break;
 	default:
-		cout << "\033[31mНекорректный ввод\033[0m" << endl;
+		cout << "Некорректный ввод" << endl;
 		return;
 	}
 }
@@ -178,7 +178,7 @@ void updateCarInfo()
 	dbRowsCount(hybridCount, combustionCount, electricCount);
 	if (electricCount == 0 && hybridCount == 0 && combustionCount == 0)
 	{
-		cout << "\n\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
+		cout << "\nАвтомобилей в каталоге нет" << endl;
 		return;
 	}
 	int catalogIndex;
@@ -194,7 +194,7 @@ void updateCarInfo()
 	cout << "Введите индекс автомобиля, о котором необходимо изменить информацию: ";
 	cin >> catalogIndex;
 	checkCatalogIndex(type, catalogIndex, electricCount, combustionCount, hybridCount);
-	cout << "\n\033[33mВведите новые данные:\033[0m" << endl;
+	cout << "\n\033[33mВведите новые данные:" << endl;
 	carDataInput(false, type, year, mileage, price, brand, model);
 	ElectricEngineCar electricCar;
 	CombustionEngineCar combustionCar;
@@ -235,7 +235,7 @@ void deleteOneCar()
 	dbRowsCount(hybridCount, combustionCount, electricCount);
 	if (electricCount == 0 && hybridCount == 0 && combustionCount == 0)
 	{
-		cout << "\n\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
+		cout << "\nАвтомобилей в каталоге нет" << endl;
 		return;
 	}
 	int catalogIndex;
@@ -271,7 +271,7 @@ void searchForCarInDB(const string& tableName, const string& parameter1, const s
 	int error = sqlite3_open("Cars.db", &dataBase);
 	if (error)
 	{
-		cout << "\033[1;31mНе удалось открыть базу данных\033[0m" << sqlite3_errmsg(dataBase) << endl;
+		cout << "Не удалось открыть базу данных" << sqlite3_errmsg(dataBase) << endl;
 		return;
 	}
 	if (parameter2 != " ")
@@ -290,14 +290,14 @@ void searchForCarInDB(const string& tableName, const string& parameter1, const s
 	error = sqlite3_prepare_v2(dataBase, SQL, -1, &stmt, nullptr);
 	if (error != SQLITE_OK)
 	{
-		std::cout << "\033[1;31mНе удалось выполнить запрос.\033[0m" << sqlite3_errmsg(dataBase) << std::endl;
+		std::cout << "Не удалось выполнить запрос." << sqlite3_errmsg(dataBase) << std::endl;
 		return;
 	}
 	int i = 1;
-	std::cout << "\n\033[33mРезультаты поиска:\033[0m" << std::endl;
+	std::cout << "\n\033[33mРезультаты поиска:" << std::endl;
 	while (sqlite3_step(stmt) == SQLITE_ROW)
 	{
-		std::cout << "\n\033[97m" << i << "-й автомобиль:\033[0m\n" << std::endl;
+		std::cout << "\n" << i << "-й автомобиль:\n" << std::endl;
 		std::cout << "  Год выпуска: " << sqlite3_column_int(stmt, 1) << std::endl;
 		std::cout << "  Пробег в км: " << sqlite3_column_int(stmt, 2) << std::endl;
 		std::cout << "  Стоимость в $: " << sqlite3_column_double(stmt, 3) << std::endl;
@@ -327,7 +327,7 @@ void inputDataInRange(const string& msg, T& min, T& max)
 	cin >> min >> max;
 	while (min < 0 || max < 0)
 	{
-		cout << "\033[31mНекорректный ввод\033[0m\n" << msg << " (от и до): ";
+		cout << "Некорректный ввод\n" << msg << " (от и до): ";
 		cin >> min >> max;
 	}
 }
@@ -342,7 +342,7 @@ void searchForCar()
 	dbRowsCount(hybridCount, combustionCount, electricCount);
 	if (electricCount == 0 && hybridCount == 0 && combustionCount == 0)
 	{
-		cout << "\n\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
+		cout << "\nАвтомобилей в каталоге нет" << endl;
 		return;
 	}
 	vector <int> vectorInt(2);
@@ -366,7 +366,7 @@ void searchForCar()
 		vectorStr[0] = "hybrid_cars";
 		break;
 	default:
-		cout << "\033[31mТакого типа не существует\n\033[0m" << endl;
+		cout << "Такого типа не существует\n" << endl;
 		return;
 	}
 	int choice = subMenu();
@@ -446,14 +446,14 @@ void searchForCar()
 	case 8:
 		if (type != 3)
 		{
-			cout << "\033[31mУ выбранного типа автомобиля нет гибридного двигателя\n\033[0m" << endl;
+			cout << "У выбранного типа автомобиля нет гибридного двигателя\n" << endl;
 			return;
 		}
 		cout << "Выберите тип гибрида:\n0. Последовательный\n1. Параллельный\n" << endl;
 		cin >> hybridType;
 		while (hybridType != 0 && hybridType != 1)
 		{
-			cout << "\033[31mНекорректный ввод\033[0m\nВыберите тип гибрида:\n0. Последовательный\n1. Параллельный\n" << endl;
+			cout << "Некорректный ввод\nВыберите тип гибрида:\n0. Последовательный\n1. Параллельный\n" << endl;
 			cin >> hybridType;
 		}
 		vectorStr[3] = "hybrid_type";
@@ -476,14 +476,14 @@ void compareAndPrint(T val1, T val2, bool isReverse, const string& msg)
 			cout.width(12);
 			cout << "\033[32m" << val1;
 			cout.width(27);
-			cout << "\033[31m" << val2 << "\033[0m" << endl;
+			cout << "" << val2 << "" << endl;
 		}
 		else
 		{
 			cout.width(12);
-			cout << "\033[31m" << val1;
+			cout << "" << val1;
 			cout.width(27);
-			cout << "\033[32m" << val2 << "\033[0m" << endl;
+			cout << "\033[32m" << val2 << "" << endl;
 		}
 		break;
 	case 0:
@@ -492,14 +492,14 @@ void compareAndPrint(T val1, T val2, bool isReverse, const string& msg)
 			cout.width(12);
 			cout << "\033[32m" << val1;
 			cout.width(27);
-			cout << "\033[31m" << val2 << "\033[0m" << endl;
+			cout << "" << val2 << "" << endl;
 		}
 		else
 		{
 			cout.width(12);
-			cout << "\033[31m" << val1;
+			cout << "" << val1;
 			cout.width(27);
-			cout << "\033[32m" << val2 << "\033[0m" << endl;
+			cout << "\033[32m" << val2 << "" << endl;
 		}
 		break;
 	default:
@@ -553,7 +553,7 @@ void compareCars()
 	vector <string> vectorStr(4); //0 - brand1, 1 - brand2, 2 - model1, 3 - model2
 	if (electricCount == 0 && hybridCount == 0 && combustionCount == 0)
 	{
-		cout << "\n\033[31mАвтомобилей в каталоге нет\033[0m" << endl;
+		cout << "\nАвтомобилей в каталоге нет" << endl;
 		return;
 	}
 	catalogOutput();
@@ -569,7 +569,7 @@ void compareCars()
 		case 1:
 			if (index1 > electricCount || index2 > electricCount)
 			{
-				cout << "\033[31mВведен неверный индекс\033[0m" << endl;
+				cout << "Введен неверный индекс" << endl;
 				return;
 			}
 			electricCar.getCar(index1, vectorInt[0], vectorInt[2], vectorFloat[0], vectorStr[0], vectorStr[2], vectorFloat[2]);
@@ -578,7 +578,7 @@ void compareCars()
 		case 2:
 			if (index1 > combustionCount || index2 > combustionCount)
 			{
-				cout << "\033[31mВведен неверный индекс\033[0m" << endl;
+				cout << "Введен неверный индекс" << endl;
 				return;
 			}
 			combustionCar.getCar(index1, vectorInt[0], vectorInt[2], vectorFloat[0], vectorStr[0], vectorStr[2], vectorFloat[2]);
@@ -587,14 +587,14 @@ void compareCars()
 		case 3:
 			if (index1 > hybridCount || index2 > hybridCount)
 			{
-				cout << "\033[31mВведен неверный индекс\033[0m" << endl;
+				cout << "Введен неверный индекс" << endl;
 				return;
 			}
 			hybridCar.getCar(index1, vectorInt[0], vectorInt[2], vectorFloat[0], vectorStr[0], vectorStr[2], vectorFloat[2], vectorFloat[4], vectorInt[4]);
 			hybridCar.getCar(index2, vectorInt[1], vectorInt[3], vectorFloat[1], vectorStr[1], vectorStr[3], vectorFloat[3], vectorFloat[5], vectorInt[5]);
 			break;
 		default:
-			cout << "\n\033[31mТакого типа не существует\033[0m" << endl;
+			cout << "\nТакого типа не существует" << endl;
 			return;
 	}
 	compareCarsToParameters(type, vectorInt, vectorFloat, vectorStr);

@@ -55,10 +55,10 @@ void HybridEngineCar::print()
 		return;
 	}
 	int i = 1;
-	std::cout << "\n\033[33mГибридные автомобили:\033[0m" << std::endl;
+	std::cout << "\n\033[33mГибридные автомобили:" << std::endl;
 	while (sqlite3_step(stmt) == SQLITE_ROW)
 	{
-		std::cout << "\n\033[97m" << i << "-й автомобиль:\033[0m\n" << std::endl;
+		std::cout << "\n" << i << "-й автомобиль:\n" << std::endl;
 		std::cout << "  Год выпуска: " << sqlite3_column_int(stmt, 0) << std::endl;
 		std::cout << "  Пробег в км: " << sqlite3_column_int(stmt, 1) << std::endl;
 		std::cout << "  Стоимость в $: " << sqlite3_column_double(stmt, 2) << std::endl;
