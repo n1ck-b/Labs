@@ -33,10 +33,10 @@
     <ClCompile Include="HybridEngineCar.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="shell.c">
+    <ClCompile Include="sqlite\shell.c">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="sqlite3.c">
+    <ClCompile Include="sqlite\sqlite3.c">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>

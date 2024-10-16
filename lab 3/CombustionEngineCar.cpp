@@ -52,7 +52,7 @@ void CombustionEngineCar::print()
 		return;
 	}
 	int i = 1;
-	std::cout << "\n\033[33mАвтомобили с ДВС:" << std::endl;
+	std::cout << "\nАвтомобили с ДВС:" << std::endl;
 	while (sqlite3_step(stmt) == SQLITE_ROW)
 	{
 		std::cout << "\n" << i << "-й автомобиль:\n" << std::endl;

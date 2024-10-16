@@ -194,7 +194,7 @@ void updateCarInfo()
 	cout << "¬ведите индекс автомобил€, о котором необходимо изменить информацию: ";
 	cin >> catalogIndex;
 	checkCatalogIndex(type, catalogIndex, electricCount, combustionCount, hybridCount);
-	cout << "\n\033[33m¬ведите новые данные:" << endl;
+	cout << "\n¬ведите новые данные:" << endl;
 	carDataInput(false, type, year, mileage, price, brand, model);
 	ElectricEngineCar electricCar;
 	CombustionEngineCar combustionCar;
@@ -294,7 +294,7 @@ void searchForCarInDB(const string& tableName, const string& parameter1, const s
 		return;
 	}
 	int i = 1;
-	std::cout << "\n\033[33m–езультаты поиска:" << std::endl;
+	std::cout << "\n–езультаты поиска:" << std::endl;
 	while (sqlite3_step(stmt) == SQLITE_ROW)
 	{
 		std::cout << "\n" << i << "-й автомобиль:\n" << std::endl;
@@ -474,32 +474,32 @@ void compareAndPrint(T val1, T val2, bool isReverse, const string& msg)
 		if (val1 > val2)
 		{
 			cout.width(12);
-			cout << "\033[32m" << val1;
+			cout << val1;
 			cout.width(27);
-			cout << "" << val2 << "" << endl;
+			cout << val2 << endl;
 		}
 		else
 		{
 			cout.width(12);
 			cout << "" << val1;
 			cout.width(27);
-			cout << "\033[32m" << val2 << "" << endl;
+			cout << val2 << endl;
 		}
 		break;
 	case 0:
 		if (val1 < val2)
 		{
 			cout.width(12);
-			cout << "\033[32m" << val1;
+			cout << val1;
 			cout.width(27);
-			cout << "" << val2 << "" << endl;
+			cout << val2 << endl;
 		}
 		else
 		{
 			cout.width(12);
-			cout << "" << val1;
+			cout << val1;
 			cout.width(27);
-			cout << "\033[32m" << val2 << "" << endl;
+			cout << val2 << endl;
 		}
 		break;
 	default:

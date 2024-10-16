@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include "sqlite3.h"
+#include "sqlite/sqlite3.h"
 #include "Car.h"
 #include "ElectricEngineCar.h"
 #include "CombustionEngineCar.h"
