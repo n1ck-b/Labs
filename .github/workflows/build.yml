@@ -5,6 +5,7 @@ on:
       - main
       - 'lab 1'
       - 'lab 2'
+      - 'lab 3'
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
