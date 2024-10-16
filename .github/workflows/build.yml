@@ -22,7 +22,7 @@ jobs:
         uses: SonarSource/sonarcloud-github-c-cpp@v3
       - name: Compile project
         run: |
-          build-wrapper-win-x86-64 --out-dir "${{ env.BUILD_WRAPPER_OUT_DIR }}" g++ -o my_program "lab 3/main.cpp" "lab 3/Source.cpp" "lab 3/CombustionEngineCar.cpp" "lab 3/Car.cpp" "lab 3/ElectricEngineCar.cpp" "lab 3/HybridEngineCar.cpp"  
+          build-wrapper-win-x86-64 --out-dir "${{ env.BUILD_WRAPPER_OUT_DIR }}" g++ -o my_program "lab 3/main.cpp" "lab 3/Source.cpp" "lab 3/CombustionEngineCar.cpp" "lab 3/Car.cpp" "lab 3/ElectricEngineCar.cpp"  "lab 3/HybridEngineCar.cpp"  
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
