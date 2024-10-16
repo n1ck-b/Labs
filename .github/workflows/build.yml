@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Set up vcpkg
-        uses: lukka/get-vcpkg@v9
+        uses: lukka/get-vcpkg@v0
         with:
          vcpkgRoot: ${{ github.workspace }}/vcpkg
 
