@@ -163,11 +163,7 @@ void HybridEngineCar::getCar(int index, int& year, int& mileage, float& price, s
 		return;
 	}
 	sqlite3_bind_int(stmt, 1, id);
-	error = sqlite3_step(stmt);
-	if (error != SQLITE_DONE)
-	{
-		std::cout << "Не удалось выполнить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
-	}
+	sqlite3_step(stmt);
 	year = sqlite3_column_int(stmt, 0);
 	mileage = sqlite3_column_int(stmt, 1);
 	price = static_cast<float>(sqlite3_column_double(stmt, 2));

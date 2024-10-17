@@ -153,15 +153,11 @@ void ElectricEngineCar::getCar(int index, int& year, int& mileage, float& price,
 		return;
 	}
 	sqlite3_bind_int(stmt, 1, id);
-	error = sqlite3_step(stmt);
-	if (error != SQLITE_DONE)
-	{
-		std::cout << "Не удалось выполнить SQL запрос: " << sqlite3_errmsg(dataBase) << std::endl;
-	}
+	sqlite3_step(stmt);
 	year = sqlite3_column_int(stmt, 0);
 	mileage = sqlite3_column_int(stmt, 1);
 	price = static_cast<float>(sqlite3_column_double(stmt, 2));
-	brand = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
-	model = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+	brand = (const char*)sqlite3_column_text(stmt, 3);
+	model = (const char*)sqlite3_column_text(stmt, 4);
 	btrCapacity = static_cast<float>(sqlite3_column_double(stmt, 5));
 }
