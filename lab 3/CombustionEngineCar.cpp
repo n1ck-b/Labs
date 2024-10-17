@@ -156,7 +156,7 @@ void CombustionEngineCar::getCar(int index, int& year, int& mileage, float& pric
 	year = sqlite3_column_int(stmt, 0);
 	mileage = sqlite3_column_int(stmt, 1);
 	price = static_cast<float>(sqlite3_column_double(stmt, 2));
-	brand = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
-	model = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+	brand = (const char*)sqlite3_column_text(stmt, 3);
+	model = (const char*)sqlite3_column_text(stmt, 4);
 	tankCapacity = static_cast<float>(sqlite3_column_double(stmt, 5));
 }
