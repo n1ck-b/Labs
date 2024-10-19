@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 int mainMenu()
 {
 	int choice;
@@ -44,13 +43,14 @@ int subMenu()
 		}
 	}
 }
-void carDataInput(bool isFull, int& type, int& year, int& mileage, float& price, string& brand, string& model)
+template <typename T>
+void carDataInput(T& carClass)
 {
-	if (isFull)
-	{
-		cout << "\nВыберите тип двигателя:\n1. Электрический\n2. Внутреннего сгорания\n3. Гибридный" << endl;
-		cin >> type;
-	}
+	int year;
+	int mileage;
+	float price;
+	string brand;
+	string model;
 	cout << "Введите год выпуска автомобиля: ";
 	cin >> year;
 	cout << "Введите пробег в км: ";
@@ -62,6 +62,11 @@ void carDataInput(bool isFull, int& type, int& year, int& mileage, float& price,
 	getline(cin, brand);
 	cout << "Введите название модели: " ;
 	getline(cin, model);
+	carClass.setYear(year);
+	carClass.setMileage(mileage);
+	carClass.setPrice(price);
+	carClass.setBrand(brand);
+	carClass.setModel(model);
 }
 int tableRowCount(int& count, const string& tableName)
 {
@@ -84,31 +89,38 @@ void dbRowsCount(int& hybridCount, int& combustionCount, int& electricCount)
 }
 void addOneCar()
 {
-	int year;
-	int mileage;
 	int engineType;
-	float price;
-	string brand;
-	string model;
-	carDataInput(true, engineType, year, mileage, price, brand, model);
 	ElectricEngineCar electricCar;
 	CombustionEngineCar combustionCar;
 	HybridEngineCar hybridCar;
+	cout << "\nВыберите тип двигателя:\n1. Электрический\n2. Внутреннего сгорания\n3. Гибридный" << endl;
+	cin >> engineType;
+	const char* SQL;
 	switch (engineType)
 	{
 		case 1:
+			Repository <ElectricEngineCar> repository1;
+			carDataInput(electricCar);
 			float batteryCapacity;
 			cout << "Введите емкость аккумулятора: ";
 			cin >> batteryCapacity;
-			electricCar.addCar(year, mileage, price, brand, model, batteryCapacity);
+			SQL = "INSERT INTO electric_cars (year_of_production, mileage, price, brand, model, battery_capacity)"
+				"VALUES (?, ?, ?, ?, ?, ?);";
+			repository1.addCar(electricCar, SQL, engineType, 0, batteryCapacity);
 			break;
 		case 2:
+			Repository <CombustionEngineCar> repository2;
+			carDataInput(combustionCar);
 			float fuelTankCapacity;
 			cout << "Введите объем топливного бака: ";
 			cin >> fuelTankCapacity;
-			combustionCar.addCar(year, mileage, price, brand, model, fuelTankCapacity);
+			SQL = "INSERT INTO combustion_cars (year_of_production, mileage, price, brand, model, fuel_tank_capacity)"
+				"VALUES (?, ?, ?, ?, ?, ?);";
+			repository2.addCar(combustionCar, SQL, engineType, fuelTankCapacity);
 			break;
 		case 3:
+			Repository <HybridEngineCar> repository3;
+			carDataInput(hybridCar);
 			int hybridType;
 			cout << "Введите емкость аккумулятора: ";
 			cin >> batteryCapacity;
@@ -116,7 +128,10 @@ void addOneCar()
 			cin >> fuelTankCapacity;
 			cout << "Выберите тип гибрида:\n0. Последовательный\n1. Параллельный" << endl;
 			cin >> hybridType;
-			hybridCar.addCar(year, mileage, price, brand, model, batteryCapacity, fuelTankCapacity, hybridType);
+			hybridCar.setHybridType(hybridType);
+			SQL = "INSERT INTO hybrid_cars (year_of_production, mileage, price, brand, model, fuel_tank_capacity, battery_capacity, hybrid_type)"
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+			repository3.addCar(hybridCar, SQL, engineType, fuelTankCapacity, batteryCapacity, hybridType);
 			break;
 		default:
 			return;
@@ -133,12 +148,18 @@ void catalogOutput()
 		cout << "\nАвтомобилей в каталоге нет" << endl;
 		return;
 	}
-	CombustionEngineCar combustionCar;
-	combustionCar.print();
-	ElectricEngineCar electricCar;
-	electricCar.print();
-	HybridEngineCar hybridCar;
-	hybridCar.print();
+	const char* SQL = "SELECT year_of_production, mileage, price, brand, model, fuel_tank_capacity "
+		"FROM combustion_cars;";
+	Repository <CombustionEngineCar> repository1;
+	repository1.print(SQL, 2, "\nАвтомобили с ДВС :");
+	SQL = "SELECT year_of_production, mileage, price, brand, model, battery_capacity "
+		"FROM electric_cars;";
+	Repository <ElectricEngineCar> repository2;
+	repository2.print(SQL, 1, "\nЭлектрические автомобили:");
+	SQL = "SELECT year_of_production, mileage, price, brand, model, fuel_tank_capacity, battery_capacity, hybrid_type "
+		"FROM hybrid_cars;";
+	Repository <HybridEngineCar> repository3;
+	repository3.print(SQL, 3, "\nГибридные автомобили:");
 }
 void checkCatalogIndex(int type, int catalogIndex, int electricCount, int combustionCount, int hybridCount)
 {
@@ -182,11 +203,6 @@ void updateCarInfo()
 		return;
 	}
 	int catalogIndex;
-	int year;
-	int mileage;
-	float price;
-	string brand;
-	string model;
 	catalogOutput();
 	int type;
 	cout << "\nВыберите тип автомобиля:\n1. Электрический\n2. С ДВС\n3. Гибридный\n";
@@ -195,25 +211,33 @@ void updateCarInfo()
 	cin >> catalogIndex;
 	checkCatalogIndex(type, catalogIndex, electricCount, combustionCount, hybridCount);
 	cout << "\nВведите новые данные:" << endl;
-	carDataInput(false, type, year, mileage, price, brand, model);
 	ElectricEngineCar electricCar;
 	CombustionEngineCar combustionCar;
 	HybridEngineCar hybridCar;
+	const char* SQL;
 	switch (type)
 	{
 	case 1:
+		Repository <ElectricEngineCar> rep1;
+		carDataInput(electricCar);
 		float batteryCapacity;
 		cout << "\nВведите емкость аккумулятора: ";
 		cin >> batteryCapacity;
-		electricCar.updateCar(catalogIndex, year, mileage, price, brand, model, batteryCapacity);
+		SQL = "UPDATE electric_cars SET year_of_production = ?, mileage = ?, price = ?, brand = ?, model = ?, battery_capacity = ? WHERE id = ?;";
+		rep1.updateCar(electricCar, catalogIndex, SQL, "electric_cars", type, 0, batteryCapacity);
 		break;
 	case 2:
+		Repository <CombustionEngineCar> rep2;
+		carDataInput(combustionCar);
 		float fuelTankCapacity;
 		cout << "\nВведите объем топливного бака: ";
 		cin >> fuelTankCapacity;
-		combustionCar.updateCar(catalogIndex, year, mileage, price, brand, model, fuelTankCapacity);
+		SQL = "UPDATE combustion_cars SET year_of_production = ?, mileage = ?, price = ?, brand = ?, model = ?, fuel_tank_capacity = ? WHERE id = ?;";
+		rep2.updateCar(combustionCar, catalogIndex, SQL, "combustion_cars", type, fuelTankCapacity);
 		break;
 	case 3:
+		Repository <HybridEngineCar> rep3;
+		carDataInput(hybridCar);
 		int hybridType;
 		cout << "\nВведите емкость аккумулятора: ";
 		cin >> batteryCapacity;
@@ -221,7 +245,8 @@ void updateCarInfo()
 		cin >> fuelTankCapacity;
 		cout << "\nВыберите тип гибрида:\n0. Последовательный\n1. Параллельный\n" << endl;
 		cin >> hybridType;
-		hybridCar.updateCar(catalogIndex, year, mileage, price, brand, model, batteryCapacity, fuelTankCapacity, hybridType);
+		SQL = "UPDATE hybrid_cars SET year_of_production = ?, mileage = ?, price = ?, brand = ?, model = ?, fuel_tank_capacity = ?, battery_capacity = ?, hybrid_type = ? WHERE id = ?;";
+		rep3.updateCar(hybridCar, catalogIndex, SQL, "hybrid_cars", type, fuelTankCapacity, batteryCapacity, hybridType);
 		break;
 	default:
 		return;
@@ -249,76 +274,27 @@ void deleteOneCar()
 	CombustionEngineCar combustionCar;
 	HybridEngineCar hybridCar;
 	checkCatalogIndex(type, catalogIndex, electricCount, combustionCount, hybridCount);
+	const char* SQL;
 	switch (type)
 	{
 	case 1:
-		electricCar.deleteCar(catalogIndex);
+		Repository <ElectricEngineCar> rep1;
+		SQL = "DELETE FROM electric_cars WHERE id = ?;";
+		rep1.deleteCar(catalogIndex, "electric_cars", SQL);
 		break;
 	case 2:
-		combustionCar.deleteCar(catalogIndex);
+		Repository <CombustionEngineCar> rep2;
+		SQL = "DELETE FROM combustion_cars WHERE id = ?;";
+		rep2.deleteCar(catalogIndex, "combustion_cars", SQL);
 		break;
 	case 3:
-		hybridCar.deleteCar(catalogIndex);
+		Repository <HybridEngineCar> rep3;
+		SQL = "DELETE FROM hybrid_cars WHERE id = ?;";
+		rep3.deleteCar(catalogIndex, "hybrid_cars", SQL);
 		break;
 	default:
 		break;
 	}
-}
-void searchForCarInDB(const string& tableName, const string& parameter1, const string& parameter2, const string& fieldName, int type)
-{
-	sqlite3* dataBase;
-	string sql;
-	int error = sqlite3_open("Cars.db", &dataBase);
-	if (error)
-	{
-		cout << "Не удалось открыть базу данных" << sqlite3_errmsg(dataBase) << endl;
-		return;
-	}
-	if (parameter2 != " ")
-	{
-		sql = "SELECT * FROM " + tableName +
-			  " WHERE " + fieldName + " >= " + parameter1 + " AND " + fieldName + " <= " + parameter2 + ";";
-	}
-	else
-	{
-		sql = "SELECT * FROM " + tableName +
-			  " WHERE " + fieldName + " = '" + parameter1 + "';";
-	}
-	cout << sql << endl;
-	const char* SQL = sql.c_str();
-	sqlite3_stmt* stmt;
-	error = sqlite3_prepare_v2(dataBase, SQL, -1, &stmt, nullptr);
-	if (error != SQLITE_OK)
-	{
-		std::cout << "Не удалось выполнить запрос." << sqlite3_errmsg(dataBase) << std::endl;
-		return;
-	}
-	int i = 1;
-	std::cout << "\nРезультаты поиска:" << std::endl;
-	while (sqlite3_step(stmt) == SQLITE_ROW)
-	{
-		std::cout << "\n" << i << "-й автомобиль:\n" << std::endl;
-		std::cout << "  Год выпуска: " << sqlite3_column_int(stmt, 1) << std::endl;
-		std::cout << "  Пробег в км: " << sqlite3_column_int(stmt, 2) << std::endl;
-		std::cout << "  Стоимость в $: " << sqlite3_column_double(stmt, 3) << std::endl;
-		std::cout << "  Марка: " << sqlite3_column_text(stmt, 4) << std::endl;
-		std::cout << "  Модель: " << sqlite3_column_text(stmt, 5) << std::endl;
-		if (type == 2 || type == 3)
-			std::cout << "  Объем топливного бака: " << sqlite3_column_double(stmt, 6) << std::endl;
-		if(type == 1 || type == 3)
-			std::cout << "  Емкость аккумулятора: " << sqlite3_column_double(stmt, 7) << std::endl;
-		if (type == 3)
-		{
-			int hybridType = sqlite3_column_int(stmt, 8);
-			if (hybridType == 0)
-				std::cout << "  Тип гибридного двигателя: последовательный" << std::endl;
-			else
-				std::cout << "  Тип гибридного двигателя: параллельный" << std::endl;
-		}
-		i++;
-	}
-	sqlite3_finalize(stmt);
-	sqlite3_close(dataBase);
 }
 template <typename T>
 void inputDataInRange(const string& msg, T& min, T& max)
@@ -337,6 +313,7 @@ void searchForCar()
 	int hybridCount;
 	int combustionCount;
 	int type;
+	Repository <ElectricEngineCar> rep;
 	ostringstream oss;
 	string str;
 	dbRowsCount(hybridCount, combustionCount, electricCount);
@@ -462,7 +439,7 @@ void searchForCar()
 	default:
 		break;
 	}
-	searchForCarInDB(vectorStr[0], vectorStr[1], vectorStr[2], vectorStr[3], type);
+	rep.searchForCarInDB(vectorStr[0], vectorStr[1], vectorStr[2], vectorStr[3], type);
 }
 template <typename T> 
 void compareAndPrint(T val1, T val2, bool isReverse, const string& msg)
@@ -474,66 +451,67 @@ void compareAndPrint(T val1, T val2, bool isReverse, const string& msg)
 		if (val1 > val2)
 		{
 			cout.width(12);
-			cout << val1;
+			cout << "\033[32m" << val1;
 			cout.width(27);
-			cout << val2 << endl;
+			cout << "\033[31m" << val2 << "\033[0m" << endl;
 		}
 		else
 		{
 			cout.width(12);
-			cout << "" << val1;
+			cout << "\033[31m" << val1;
 			cout.width(27);
-			cout << val2 << endl;
+			cout << "\033[32m" << val2 << "\033[0m" << endl;
 		}
 		break;
 	case 0:
 		if (val1 < val2)
 		{
 			cout.width(12);
-			cout << val1;
+			cout << "\033[32m" << val1;
 			cout.width(27);
-			cout << val2 << endl;
+			cout << "\033[31m" << val2 << "\033[0m" << endl;
 		}
 		else
 		{
 			cout.width(12);
-			cout << val1;
+			cout << "\033[31m" << val1;
 			cout.width(27);
-			cout << val2 << endl;
+			cout << "\033[32m" << val2 << "\033[0m" << endl;
 		}
 		break;
 	default:
 		break;
 	}
 }
-void compareCarsToParameters(int type, vector <int> vectorInt, vector <float> vectorFloat, vector <string> vectorStr)
+template <typename T>
+void compareCarsToParameters(int type, vector <T> carObj, vector <float> vectorFloat)
 {
 	std::cout << "Результат сравнения:\n" << std::endl;
 	std::cout << "\t\t1-ый автомобиль\t\t  2-ой автомобиль" << std::endl;
-	compareAndPrint(vectorInt[0], vectorInt[1], true, "Год выпуска:  ");
-	compareAndPrint(vectorInt[2], vectorInt[3], false, "Пробег:     ");
-	compareAndPrint(vectorFloat[0], vectorFloat[1], false, "Стоимость $: ");
+	compareAndPrint(carObj[0].getYear(), carObj[1].getYear(), true, "Год выпуска:  ");
+	compareAndPrint(carObj[0].getMileage(), carObj[1].getMileage(), false, "Пробег:     ");
+	compareAndPrint(carObj[0].getPrice(), carObj[1].getPrice(), false, "Стоимость $: ");
 	std::cout << "Марка:       ";
 	std::cout.width(12);
-	std::cout << vectorStr[0];
+	std::cout << carObj[0].getBrand();
 	std::cout.width(25);
-	std::cout << vectorStr[1];
+	std::cout << carObj[1].getBrand();
 	std::cout << "\nМодель:      ";
 	std::cout.width(12);
-	std::cout << vectorStr[2];
+	std::cout << carObj[0].getModel();
 	std::cout.width(25);
-	std::cout << vectorStr[3] << std::endl;
+	std::cout << carObj[1].getModel() << std::endl;
 	switch (type)
 	{
 	case 1:
-		compareAndPrint(vectorFloat[2], vectorFloat[3], false, "Емкость батареи:");
+		compareAndPrint(vectorFloat[0], vectorFloat[1], true, "Емкость батареи:");
 		break;
 	case 2:
 		compareAndPrint(vectorFloat[2], vectorFloat[3], true, "Объем бака:     ");
 		break;
 	case 3:
-		compareAndPrint(vectorFloat[2], vectorFloat[3], false, "Емкость батареи:");
-		compareAndPrint(vectorFloat[4], vectorFloat[5], true, "Объем бака:     ");
+		compareAndPrint(vectorFloat[0], vectorFloat[1], true, "Емкость батареи:");
+		compareAndPrint(vectorFloat[2], vectorFloat[3], true, "Объем бака:     ");
 		break;
 	default:
 		break;
@@ -544,13 +522,13 @@ void compareCars()
 	int electricCount;
 	int hybridCount;
 	int combustionCount;
+	const char* SQL;
 	dbRowsCount(hybridCount, combustionCount, electricCount);
-	ElectricEngineCar electricCar;
-	CombustionEngineCar combustionCar;
-	HybridEngineCar hybridCar;
-	vector <int> vectorInt(6); //0 - year1, 1 - year2, 2 - mileage1, 3 - mileage2, 4 - hybridType1, 5 - hybridType2
-	vector <float> vectorFloat(6); //0 - price1, 1 - price2, 2 - batteryCapacity1, 3 - batteryCapacity2, 4 - fuelTankCapacity1, 5 - fuelTankCapacity2
-	vector <string> vectorStr(4); //0 - brand1, 1 - brand2, 2 - model1, 3 - model2
+	vector<ElectricEngineCar> electricCar(2);
+	vector<CombustionEngineCar> combustionCar(2);
+	vector<HybridEngineCar> hybridCar(2);
+	vector<int> vectorInt(2); //0 - hybridType1, 1 - hybridType2
+	vector<float> vectorFloat(4); //0 - batteryCapacity1, 1 - batteryCapacity2, 2 - fuelTankCapacity1, 3 - fuelTankCapacity2
 	if (electricCount == 0 && hybridCount == 0 && combustionCount == 0)
 	{
 		cout << "\nАвтомобилей в каталоге нет" << endl;
@@ -567,35 +545,43 @@ void compareCars()
 	switch (type)
 	{
 		case 1:
+			Repository <ElectricEngineCar> rep1;
 			if (index1 > electricCount || index2 > electricCount)
 			{
 				cout << "Введен неверный индекс" << endl;
 				return;
 			}
-			electricCar.getCar(index1, vectorInt[0], vectorInt[2], vectorFloat[0], vectorStr[0], vectorStr[2], vectorFloat[2]);
-			electricCar.getCar(index2, vectorInt[1], vectorInt[3], vectorFloat[1], vectorStr[1], vectorStr[3], vectorFloat[3]);
+			SQL = "SELECT year_of_production, mileage, price, brand, model, battery_capacity FROM electric_cars WHERE id = ?;";
+			rep1.getCar(index1, "electric_cars", SQL, type, electricCar[0], vectorFloat[2], vectorFloat[0], vectorInt[0]);
+			rep1.getCar(index2, "electric_cars", SQL, type, electricCar[1], vectorFloat[3], vectorFloat[1], vectorInt[1]);
+			compareCarsToParameters(type, electricCar, vectorFloat);
 			break;
 		case 2:
+			Repository <CombustionEngineCar> rep2;
 			if (index1 > combustionCount || index2 > combustionCount)
 			{
 				cout << "Введен неверный индекс" << endl;
 				return;
 			}
-			combustionCar.getCar(index1, vectorInt[0], vectorInt[2], vectorFloat[0], vectorStr[0], vectorStr[2], vectorFloat[2]);
-			combustionCar.getCar(index2, vectorInt[1], vectorInt[3], vectorFloat[1], vectorStr[1], vectorStr[3], vectorFloat[3]);
+			SQL = "SELECT year_of_production, mileage, price, brand, model, fuel_tank_capacity FROM combustion_cars WHERE id = ?;";
+			rep2.getCar(index1, "combustion_cars", SQL, type, combustionCar[0], vectorFloat[2], vectorFloat[0], vectorInt[0]);
+			rep2.getCar(index2, "combustion_cars", SQL, type, combustionCar[1], vectorFloat[3], vectorFloat[1], vectorInt[1]);
+			compareCarsToParameters(type, combustionCar, vectorFloat);
 			break;
 		case 3:
+			Repository <HybridEngineCar> rep3;
 			if (index1 > hybridCount || index2 > hybridCount)
 			{
 				cout << "Введен неверный индекс" << endl;
 				return;
 			}
-			hybridCar.getCar(index1, vectorInt[0], vectorInt[2], vectorFloat[0], vectorStr[0], vectorStr[2], vectorFloat[2], vectorFloat[4], vectorInt[4]);
-			hybridCar.getCar(index2, vectorInt[1], vectorInt[3], vectorFloat[1], vectorStr[1], vectorStr[3], vectorFloat[3], vectorFloat[5], vectorInt[5]);
+			SQL = "SELECT year_of_production, mileage, price, brand, model, fuel_tank_capacity, battery_capacity, hybrid_type FROM hybrid_cars WHERE id = ?;";
+			rep3.getCar(index1, "hybrid_cars", SQL, type, hybridCar[0], vectorFloat[2], vectorFloat[0], vectorInt[0]);
+			rep3.getCar(index2, "hybrid_cars", SQL, type, hybridCar[1], vectorFloat[3], vectorFloat[1], vectorInt[1]);
+			compareCarsToParameters(type, hybridCar, vectorFloat);
 			break;
 		default:
 			cout << "\nТакого типа не существует" << endl;
 			return;
 	}
-	compareCarsToParameters(type, vectorInt, vectorFloat, vectorStr);
 }

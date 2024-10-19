@@ -119,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Labs C++\lab 3\sqlite;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,6 +144,7 @@
     <ClInclude Include="ElectricEngineCar.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="HybridEngineCar.h" />
+    <ClInclude Include="Repository.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
