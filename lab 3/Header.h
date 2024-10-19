@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include "sqlite/sqlite3.h"
+#include <Windows.h>
 #include "Car.h"
 #include "ElectricEngineCar.h"
 #include "CombustionEngineCar.h"

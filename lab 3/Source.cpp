@@ -451,32 +451,44 @@ void compareAndPrint(T val1, T val2, bool isReverse, const string& msg)
 		if (val1 > val2)
 		{
 			cout.width(12);
-			cout << "\033[32m" << val1;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN);
+			cout << val1;
 			cout.width(27);
-			cout << "\033[31m" << val2 << "\033[0m" << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
+			cout << val2 << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 		}
 		else
 		{
 			cout.width(12);
-			cout << "\033[31m" << val1;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
+			cout << val1;
 			cout.width(27);
-			cout << "\033[32m" << val2 << "\033[0m" << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN);
+			cout << val2 << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 		}
 		break;
 	case 0:
 		if (val1 < val2)
 		{
 			cout.width(12);
-			cout << "\033[32m" << val1;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN);
+			cout << val1;
 			cout.width(27);
-			cout << "\033[31m" << val2 << "\033[0m" << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
+			cout << val2 << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 		}
 		else
 		{
 			cout.width(12);
-			cout << "\033[31m" << val1;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
+			cout << val1;
 			cout.width(27);
-			cout << "\033[32m" << val2 << "\033[0m" << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN);
+			cout << val2 << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 		}
 		break;
 	default:
@@ -504,13 +516,13 @@ void compareCarsToParameters(int type, vector <T> carObj, vector <float> vectorF
 	switch (type)
 	{
 	case 1:
-		compareAndPrint(vectorFloat[0], vectorFloat[1], true, "Емкость батареи:");
+		compareAndPrint(vectorFloat[0], vectorFloat[1], true, "Ем-ть батареи:");
 		break;
 	case 2:
-		compareAndPrint(vectorFloat[2], vectorFloat[3], true, "Объем бака:     ");
+		compareAndPrint(vectorFloat[2], vectorFloat[3], true, "Объем бака:  ");
 		break;
 	case 3:
-		compareAndPrint(vectorFloat[0], vectorFloat[1], true, "Емкость батареи:");
+		compareAndPrint(vectorFloat[0], vectorFloat[1], true, "Ем-ть батареи:");
 		compareAndPrint(vectorFloat[2], vectorFloat[3], true, "Объем бака:     ");
 		break;
 	default:
