@@ -25,7 +25,6 @@ private slots:
     void on_backPushButton_clicked();
     void on_addPushButton_clicked();
     void editedAnyLineEdit();
-   /* void editedMileageLineEdit();*/
 };
 
 #endif // CARADDINGWINDOW_H

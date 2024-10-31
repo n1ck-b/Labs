@@ -7,7 +7,7 @@
 
 CatalogWindow::CatalogWindow(QWidget* parent)
     : QDialog(parent)
-    , ui(new Ui::CatalogWindow), clickCountForComparison(0), carIndexForComparison1(0), carIndexForComparison2(0)
+    , ui(new Ui::CatalogWindow)
 {
     ui->setupUi(this);
     ui->deletePushButton->setDisabled(true);
@@ -32,15 +32,11 @@ void CatalogWindow::on_backPushButton_clicked()
 }
 void CatalogWindow::on_addPushButton_clicked()
 {
-   /* close();*/
     CarAddingWindow* window = new CarAddingWindow(this);
     window->show();
 }
 void CatalogWindow::addItemsToList()
 {
-   /* std::string str = "Привет\nТекст\nТекст";
-    QString qstr = QString::fromStdString(str);
-    ui->listWidget->addItem(qstr);*/
     int count = 1;
     Repository<ElectricEngineCar> rep;
     const char* SQL = "SELECT year_of_production, mileage, price, brand, model, fuel_tank_capacity "
@@ -86,10 +82,6 @@ void CatalogWindow::onDeletePushButtonClicked()
        index -= (rowsCountInCombustionCarsTable + rowsCountInElectricCarsTable);
    }
    rep.deleteCar(index, tableName);
-  /* QListWidgetItem* item = ui->listWidget->currentItem();
-   ui->listWidget->removeItemWidget(item);*/
-  /* ui->listWidget->hide();
-   ui->listWidget->show();*/
    ui->listWidget->clear();
    ui->deletePushButton->setDisabled(true);
    ui->deletePushButton->setStyleSheet("color: rgb(30, 36, 39); border-radius: 10px; border-style: solid; border-width: 0px; background-color: #92AEBE; padding: 5px");
