@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindowClass</class>
+ <widget class="QMainWindow" name="MainWindowClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>568</width>
+    <height>358</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Каталог</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(244, 254, 246);
+font: 600 9pt &quot;Montserrat&quot;;</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QWidget" name="pushButtons" native="true">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>90</y>
+      <width>291</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="catalogPushButton">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(30, 36, 39);
+font: 600 10pt &quot;Montserrat&quot;;
+border-radius: 10px;
+border-style: solid;
+border-width: 0px;
+background-color: rgb(204, 232, 244);
+padding: 5px;
+</string>
+       </property>
+       <property name="text">
+        <string>Каталог</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="searchPushButton">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(30, 36, 39);
+font: 600 10pt &quot;Montserrat&quot;;
+border-radius: 10px;
+border-style: solid;
+border-width: 0px;
+background-color: rgb(204, 232, 244);
+padding: 5px
+</string>
+       </property>
+       <property name="text">
+        <string>Поиск по параметру</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exitPushButton">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(30, 36, 39);
+font: 600 10pt &quot;Montserrat&quot;;
+border-radius: 10px;
+border-style: solid;
+border-width: 0px;
+background-color: rgb(204, 232, 244);
+padding: 5px
+</string>
+       </property>
+       <property name="text">
+        <string>Выход</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="MainWindow.qrc"/>
+ </resources>
+ <connections/>
+</ui>
