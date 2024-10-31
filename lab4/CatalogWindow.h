@@ -22,9 +22,9 @@ public:
     void getDataForComparison();
 private:
     Ui::CatalogWindow* ui;
-    int clickCountForComparison;
-    int carIndexForComparison1;
-    int carIndexForComparison2;
+    int clickCountForComparison = 0;
+    int carIndexForComparison1 = 0;
+    int carIndexForComparison2 = 0;
 private slots:
     void on_backPushButton_clicked();
     void on_addPushButton_clicked();

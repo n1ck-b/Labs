@@ -1,0 +1,22 @@
+Для кнопки
+color: rgb(245, 247, 250);
+font: 600 10pt "Montserrat";
+border-radius: 10px;
+border-style: solid;
+border-width: 2px;
+border-color: rgb(78, 165, 255);
+background-color: rgb(78, 165, 255);
+padding: 5px
+
+Для окна
+background-color: rgb(245, 247, 250);
+
+Для списка:
+background-color: rgb(30, 30, 30);
+border: solid;
+border-radius: 20px;
+border-color: rgb(30, 30, 30);
+padding: 10px;
+
+Палитра
+#b3d5e9 #cce8f4 #e8f6f4 #f4fef6
