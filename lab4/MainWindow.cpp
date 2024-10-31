@@ -7,13 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui.catalogPushButton, SIGNAL(clicked()), this, SLOT(on_catalogPushButton_clicked));
     connect(ui.exitPushButton, SIGNAL(clicked()), this, SLOT(on_exitPushButton_clicked));
     connect(ui.searchPushButton, &QPushButton::clicked, this, &MainWindow::onSearchPushButtonClicked);
-   /* QBoxLayout* layout = new QBoxLayout(QBoxLayout::TopToBottom, this);
-    layout->addWidget(ui.catalogPushButton, 0, Qt::AlignCenter);
-    layout->addWidget(ui.searchPushButton, 0, Qt::AlignCenter);
-    layout->addWidget(ui.comparePushButton, 0, Qt::AlignCenter);
-    layout->addWidget(ui.exitPushButton, 0, Qt::AlignCenter);
-    setLayout(layout);*/
-   /* ui.verticalLayout->setAlignment(Qt::AlignCenter);*/
 }
 
 MainWindow::~MainWindow()
