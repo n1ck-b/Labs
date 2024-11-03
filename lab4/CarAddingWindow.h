@@ -27,9 +27,6 @@ private slots:
     void on_backPushButton_clicked();
     void onAddPushButtonClicked();
     void editedAnyLineEdit();
-<<<<<<< Updated upstream
-   /* void editedMileageLineEdit();*/
-=======
 protected:
     void closeEvent(QCloseEvent* event) override;
 >>>>>>> Stashed changes
