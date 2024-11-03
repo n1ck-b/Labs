@@ -14,8 +14,8 @@
    <string>Сравнение автомобилей</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(244, 254, 246);
-color: rgb(30, 36, 39);
+   <string notr="true">background-color: rgb(244, 240, 239);
+color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: none;
 border-width: 0px;</string>
@@ -46,13 +46,19 @@ border-width: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QPushButton:hover
+{
+	background-color: #CC3329;
+}
+QPushButton{
+	color: rgb(244, 240, 239);
+	font: 600 9pt &quot;Montserrat&quot;;
+	border-radius: 12px;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(215, 67, 57);
+	padding: 5px;
+}</string>
    </property>
    <property name="text">
     <string>Назад</string>
@@ -198,13 +204,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -220,13 +225,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -242,13 +246,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -264,13 +267,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -286,13 +288,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -308,13 +309,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -330,13 +330,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -352,13 +351,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -374,13 +372,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -396,13 +393,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -418,13 +414,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -440,13 +435,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -462,13 +456,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -484,13 +477,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -506,13 +498,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>
@@ -528,13 +519,12 @@ border-radius: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size: 9pt;
-color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
+font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
 padding: 5px;
-border-radius: 0px;</string>
+background-color: #E0D5D2;</string>
    </property>
    <property name="text">
     <string>-</string>

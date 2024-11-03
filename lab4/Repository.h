@@ -84,14 +84,30 @@ public:
 		std::string carData;
 		while (sqlite3_step(stmt) == SQLITE_ROW)
 		{
-			carData = std::to_string(count) + "-й автомобиль:\n" + "  Год выпуска: " + std::to_string(sqlite3_column_int(stmt, 0)) + "\n" + "  Пробег в км: " + std::to_string(sqlite3_column_int(stmt, 1)) + "\n" + "  Стоимость в $ : " + std::to_string(sqlite3_column_double(stmt, 2)) + "\n" + "  Марка: " + (const char*)sqlite3_column_text(stmt, 3) + "\n" + "  Модель: " + (const char*)sqlite3_column_text(stmt, 4) + "\n";
+			carData = std::to_string(count) + "-й автомобиль:\n" + "  Год выпуска: " + std::to_string(sqlite3_column_int(stmt, 0)) + "\n" + "  Пробег в км: " + std::to_string(sqlite3_column_int(stmt, 1)) + "\n" + "  Стоимость в $ : ";
+			std::string str = std::to_string(sqlite3_column_double(stmt, 2));
+			str = str.substr(0, str.find('.') + 4);
+			carData += str + "\n" + "  Марка: " + (const char*)sqlite3_column_text(stmt, 3) + "\n" + "  Модель: " + (const char*)sqlite3_column_text(stmt, 4) + "\n";
 			if (typeOfEngine == 2 || typeOfEngine == 3)
-				carData = carData + "  Объем топливного бака: " + std::to_string(sqlite3_column_double(stmt, 5)) + "\n";
+			{
+				carData = carData + "  Объем топливного бака: ";
+				str = std::to_string(sqlite3_column_double(stmt, 5));
+				str = str.substr(0, str.find('.') + 4);
+				carData += str + "\n";
+			}
 			if (typeOfEngine == 1)
-				carData = carData + "  Емкость батареи: " + std::to_string(sqlite3_column_double(stmt, 5)) + "\n";
+			{
+				carData = carData + "  Емкость батареи: ";
+				str = std::to_string(sqlite3_column_double(stmt, 5));
+				str = str.substr(0, str.find('.') + 4);
+				carData += str + "\n";
+			}
 			if (typeOfEngine == 3)
 			{
-				carData = carData + "  Емкость аккумулятора: " + std::to_string(sqlite3_column_double(stmt, 6)) + "\n";
+				carData = carData + "  Емкость аккумулятора: ";
+				str = std::to_string(sqlite3_column_double(stmt, 6));
+				str = str.substr(0, str.find('.') + 4);
+				carData += str + "\n";
 				int hybridType = sqlite3_column_int(stmt, 7);
 				if (hybridType == 0)
 					carData = carData + "  Тип гибридного двигателя: последовательный" + "\n";
@@ -202,14 +218,30 @@ public:
 		std::string carData;
 		while (sqlite3_step(stmt) == SQLITE_ROW)
 		{
-			carData = std::to_string(count) + "-й автомобиль:\n" + "  Год выпуска: " + std::to_string(sqlite3_column_int(stmt, 1)) + "\n" + "  Пробег в км: " + std::to_string(sqlite3_column_int(stmt, 2)) + "\n" + "  Стоимость в $ : " + std::to_string(sqlite3_column_double(stmt, 3)) + "\n" + "  Марка: " + (const char*)sqlite3_column_text(stmt, 4) + "\n" + "  Модель: " + (const char*)sqlite3_column_text(stmt, 5) + "\n";
+			carData = std::to_string(count) + "-й автомобиль:\n" + "  Год выпуска: " + std::to_string(sqlite3_column_int(stmt, 1)) + "\n" + "  Пробег в км: " + std::to_string(sqlite3_column_int(stmt, 2)) + "\n" + "  Стоимость в $ : ";
+			std::string str = std::to_string(sqlite3_column_double(stmt, 3));
+			str = str.substr(0, str.find('.') + 4);
+			carData += str + "\n" + "  Марка: " + (const char*)sqlite3_column_text(stmt, 4) + "\n" + "  Модель: " + (const char*)sqlite3_column_text(stmt, 5) + "\n";
 			if (typeOfEngine == 2 || typeOfEngine == 3)
-				carData = carData + "  Объем топливного бака: " + std::to_string(sqlite3_column_double(stmt, 6)) + "\n";
+			{
+				carData = carData + "  Объем топливного бака: ";
+				str = std::to_string(sqlite3_column_double(stmt, 6));
+				str = str.substr(0, str.find('.') + 4);
+				carData += str + "\n";
+			}
 			if (typeOfEngine == 1)
-				carData = carData + "  Емкость батареи: " + std::to_string(sqlite3_column_double(stmt, 6)) + "\n";
+			{
+				carData = carData + "  Емкость батареи: ";
+				str = std::to_string(sqlite3_column_double(stmt, 6));
+				str = str.substr(0, str.find('.') + 4);
+				carData += str + "\n";
+			}
 			if (typeOfEngine == 3)
 			{
-				carData = carData + "  Емкость аккумулятора: " + std::to_string(sqlite3_column_double(stmt, 7)) + "\n";
+				carData = carData + "  Емкость аккумулятора: ";
+				str = std::to_string(sqlite3_column_double(stmt, 7));
+				str = str.substr(0, str.find('.') + 4);
+				carData += str + "\n";
 				int hybridType = sqlite3_column_int(stmt, 8);
 				if (hybridType == 0)
 					carData = carData + "  Тип гибридного двигателя: последовательный" + "\n";

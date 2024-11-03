@@ -11,14 +11,15 @@ CatalogWindow::CatalogWindow(QWidget* parent)
 {
     ui->setupUi(this);
     ui->deletePushButton->setDisabled(true);
-    ui->deletePushButton->setStyleSheet("color: rgb(30, 36, 39); border-radius: 10px; border-style: solid; border-width: 0px; background-color: #92AEBE; padding: 5px");
+    ui->deletePushButton->setStyleSheet("QPushButton:hover { background-color: #CC3329; } QPushButton { color: rgb(244, 240, 239); border-radius: 12px; border-style: solid; border-width: 0px; background-color: #A62921; padding: 5px }");
     connect(ui->backPushButton, SIGNAL(clicked()), this, SLOT(on_backPushButton_clicked));
-    connect(ui->addPushButton, SIGNAL(clicked()), this, SLOT(on_addPushButton_clicked));
+    connect(ui->addPushButton, &QPushButton::clicked, this, &CatalogWindow::onAddPushButtonClicked);
     connect(ui->listWidget, &QListWidget::itemSelectionChanged, this, &CatalogWindow::choosedItemInList);
     connect(ui->deletePushButton, &QPushButton::clicked, this, &CatalogWindow::onDeletePushButtonClicked);
     connect(ui->comparePushButton, &QPushButton::clicked, this, &CatalogWindow::onComparePushButtonClicked);
     addItemsToList();
-    ui->listWidget->setStyleSheet("QListWidget::item:selected { background-color: #C6E1EC; border-radius: 10px; padding: 2px; border: none }");
+    ui->listWidget->setStyleSheet("QListWidget::item:selected { background-color: #E0E8E6; border-radius: 12px; padding: 2px; border: none; outline: none; margin-right: 10px; }");
+    ui->listWidget->setFocusPolicy(Qt::NoFocus);
 }
 CatalogWindow::~CatalogWindow()
 {
@@ -30,10 +31,11 @@ void CatalogWindow::on_backPushButton_clicked()
     MainWindow* mainWindow = new MainWindow(this);
     mainWindow->show();
 }
-void CatalogWindow::on_addPushButton_clicked()
+void CatalogWindow::onAddPushButtonClicked()
 {
-    CarAddingWindow* window = new CarAddingWindow(this);
-    window->show();
+    carAddingWindow = new CarAddingWindow(this);
+    carAddingWindow->show();
+    connect(carAddingWindow, &CarAddingWindow::carAddingWindowClosed, this, &CatalogWindow::onCarAddingWindowClosed);
 }
 void CatalogWindow::addItemsToList()
 {
@@ -52,11 +54,11 @@ void CatalogWindow::addItemsToList()
 void CatalogWindow::choosedItemInList()
 {
     ui->deletePushButton->setEnabled(true);
-    ui->deletePushButton->setStyleSheet("color: rgb(30, 36, 39); border-radius: 10px; border-style: solid; border-width: 0px; background-color: rgb(204, 232, 244); padding: 5px");
+    ui->deletePushButton->setStyleSheet("QPushButton:hover { background-color: #CC3329; } QPushButton { color: rgb(244, 240, 239); border-radius: 12px; border-style: solid; border-width: 0px; background-color: rgb(215, 67, 57); padding: 5px }");
     if (ui->listWidget->selectedItems().size() == 0)
     {
         ui->deletePushButton->setDisabled(true);
-        ui->deletePushButton->setStyleSheet("color: rgb(30, 36, 39); border-radius: 10px; border-style: solid; border-width: 0px; background-color: #92AEBE; padding: 5px");
+        ui->deletePushButton->setStyleSheet("QPushButton:hover { background-color: #CC3329; } QPushButton { color: rgb(244, 240, 239); border-radius: 12px; border-style: solid; border-width: 0px; background-color: #A62921; padding: 5px }");
     }
 }
 void CatalogWindow::onDeletePushButtonClicked()
@@ -84,7 +86,7 @@ void CatalogWindow::onDeletePushButtonClicked()
    rep.deleteCar(index, tableName);
    ui->listWidget->clear();
    ui->deletePushButton->setDisabled(true);
-   ui->deletePushButton->setStyleSheet("color: rgb(30, 36, 39); border-radius: 10px; border-style: solid; border-width: 0px; background-color: #92AEBE; padding: 5px");
+   ui->deletePushButton->setStyleSheet("QPushButton:hover { background-color: #CC3329; } QPushButton { color: rgb(244, 240, 239); border-radius: 12px; border-style: solid; border-width: 0px; background-color: #A62921; padding: 5px }");
    addItemsToList();
 }
 void CatalogWindow::getDataForComparison()
@@ -167,6 +169,8 @@ void CatalogWindow::getDataForComparison()
         window->infoAboutSecondCar(combustionCar[1], fuelTankCapacity[1], batteryCapacity[1], hybridType[1]);
     if (engineType[1] == 3)
         window->infoAboutSecondCar(hybridCar[1], fuelTankCapacity[1], batteryCapacity[1], hybridType[1]);
+    window->compareCars();
+    ui->compareLabel->setText("Чтобы сравнить\nдва автомобиля,\nвыберите первый,\nнажмите кнопку,\nзатем выберите\nвторой и нажмите\nснова.");
 }
 void CatalogWindow::onComparePushButtonClicked()
 {
@@ -182,4 +186,10 @@ void CatalogWindow::onComparePushButtonClicked()
         clickCountForComparison = 0;
         getDataForComparison();
     }
+}
+void CatalogWindow::onCarAddingWindowClosed()
+{
+    carAddingWindow->close();
+    ui->listWidget->clear();
+    addItemsToList();
 }

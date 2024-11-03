@@ -14,9 +14,9 @@
    <string>Поиск автомобилей в каталоге</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(244, 254, 246);
-color: rgb(30, 36, 39);
-font: 600 8pt &quot;Montserrat&quot;;</string>
+   <string notr="true">background-color: rgb(244, 240, 239);
+font: 600 9pt &quot;Montserrat&quot;;
+color: rgb(55, 51, 53);</string>
   </property>
   <widget class="QLabel" name="topLabel">
    <property name="geometry">
@@ -52,11 +52,7 @@ qproperty-alignment: 'AlignCenter';</string>
 }
 QCheckBox::indicator:checked {
 	border: none;
-	background-color: #87D7FF;
-}
-QCheckBox::indicator:checked::before { 
-    content: '\\2713';
-    color: #667A85; 
+	background-color: rgb(215, 67, 57);
 }</string>
    </property>
    <property name="text">
@@ -86,12 +82,12 @@ QCheckBox::indicator:checked::before {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLabel" name="yearLabelTo">
@@ -137,7 +133,7 @@ padding: 5px</string>
 }
 QCheckBox::indicator:checked {
 	border: none;
-	background-color: #87D7FF;
+	background-color: rgb(215, 67, 57);
 }</string>
    </property>
    <property name="text">
@@ -167,12 +163,12 @@ QCheckBox::indicator:checked {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="mileageLineEditFrom">
@@ -185,12 +181,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLabel" name="priceLabelFrom">
@@ -223,7 +219,7 @@ padding: 5px</string>
 }
 QCheckBox::indicator:checked {
 	border: none;
-	background-color: #87D7FF;
+	background-color: rgb(215, 67, 57);
 }</string>
    </property>
    <property name="text">
@@ -253,12 +249,12 @@ QCheckBox::indicator:checked {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="priceLineEditFrom">
@@ -271,12 +267,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLabel" name="fuelLabelFrom">
@@ -309,7 +305,7 @@ padding: 5px</string>
 }
 QCheckBox::indicator:checked {
 	border: none;
-	background-color: #87D7FF;
+	background-color: rgb(215, 67, 57);
 }</string>
    </property>
    <property name="text">
@@ -340,12 +336,12 @@ QCheckBox::indicator:checked {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="fuelLineEditFrom">
@@ -358,12 +354,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="yearLineEditTo">
@@ -376,12 +372,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLabel" name="batteryLabelTo">
@@ -407,12 +403,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="batteryLineEditTo">
@@ -425,12 +421,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLabel" name="batteryLabelFrom">
@@ -463,7 +459,7 @@ padding: 5px</string>
 }
 QCheckBox::indicator:checked {
 	border: none;
-	background-color: #87D7FF;
+	background-color: rgb(215, 67, 57);
 }</string>
    </property>
    <property name="text">
@@ -488,7 +484,7 @@ QCheckBox::indicator:checked {
 }
 QCheckBox::indicator:checked {
 	border: none;
-	background-color: #87D7FF;
+	background-color: rgb(215, 67, 57);
 }</string>
    </property>
    <property name="text">
@@ -505,12 +501,12 @@ QCheckBox::indicator:checked {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QCheckBox" name="modelCheckBox">
@@ -530,7 +526,7 @@ padding: 5px</string>
 }
 QCheckBox::indicator:checked {
 	border: none;
-	background-color: #87D7FF;
+	background-color: rgb(215, 67, 57);
 }</string>
    </property>
    <property name="text">
@@ -547,12 +543,12 @@ QCheckBox::indicator:checked {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QCheckBox" name="hybridTypeCheckBox">
@@ -572,7 +568,7 @@ padding: 5px</string>
 }
 QCheckBox::indicator:checked {
 	border: none;
-	background-color: #87D7FF;
+	background-color: rgb(215, 67, 57);
 }</string>
    </property>
    <property name="text">
@@ -589,12 +585,26 @@ QCheckBox::indicator:checked {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QComboBox 
+{
+	color: rgb(30, 36, 39);
+	font: 600 9pt &quot;Montserrat&quot;;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(200, 215, 210);
+	padding: 5px
+}
+QComboBox::drop-down
+{
+	border:none;
+}
+QComboBox::down-arrow
+{
+	image: url(:/rcs/free-icon-down-arrow-2985150.png);
+	width:10px;
+	height:10px;
+	margin-right: 7px;
+}</string>
    </property>
    <item>
     <property name="text">
@@ -613,15 +623,23 @@ padding: 5px</string>
      <x>480</x>
      <y>90</y>
      <width>331</width>
-     <height>291</height>
+     <height>411</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(244, 254, 246);
+    <string notr="true">QListWidget {
+background-color: rgb(244, 240, 239);
 border: none;
 border-radius: 15px;
-color: black;
-font: 9pt &quot;Montserrat&quot;;</string>
+font: 600 9pt &quot;Montserrat&quot;;
+}
+QListWidget::item:selected 
+{
+	background-color: #E0E8E6; 
+	border-radius: 12px; 
+	padding: 2px; 
+	border: none 
+}</string>
    </property>
   </widget>
   <widget class="QPushButton" name="backPushButton">
@@ -634,13 +652,21 @@ font: 9pt &quot;Montserrat&quot;;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QPushButton:hover
+{
+	background-color: #9AB6AC;
+}
+QPushButton{
+	color: rgb(55, 51, 53);
+	font: 600 10pt &quot;Montserrat&quot;;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(200, 215, 210);
+	padding: 5px;
+}
+
+</string>
    </property>
    <property name="text">
     <string>Назад</string>
@@ -649,20 +675,26 @@ padding: 5px</string>
   <widget class="QPushButton" name="searchPushButton">
    <property name="geometry">
     <rect>
-     <x>289</x>
+     <x>269</x>
      <y>480</y>
-     <width>141</width>
+     <width>161</width>
      <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QPushButton:hover
+{
+	background-color: #CC3329;
+}
+QPushButton{
+	color: rgb(244, 240, 239);
+	font: 600 10pt &quot;Montserrat&quot;;
+	border-radius: 12px;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(215, 67, 57);
+	padding: 5px;
+}</string>
    </property>
    <property name="text">
     <string>Найти автомобили</string>
@@ -671,7 +703,7 @@ padding: 5px</string>
   <widget class="QLabel" name="searchLabel">
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>580</x>
      <y>40</y>
      <width>151</width>
      <height>16</height>
@@ -685,6 +717,8 @@ padding: 5px</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

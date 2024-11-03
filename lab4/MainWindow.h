@@ -4,6 +4,8 @@
 #include "ui_MainWindow.h"
 #include "CatalogWindow.h"
 #include "SearchForCarsWindow.h"
+#include <QPropertyAnimation>
+#include <QGraphicsDropShadowEffect>
 
 class MainWindow : public QMainWindow
 {
@@ -16,6 +18,7 @@ public:
 private:
     Ui::MainWindowClass ui;
     CatalogWindow* catalogWindow;
+    void setStyles();
 private slots:
     void on_catalogPushButton_clicked();
     void on_exitPushButton_clicked();

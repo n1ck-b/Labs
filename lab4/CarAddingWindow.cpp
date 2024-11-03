@@ -9,10 +9,10 @@ CarAddingWindow::CarAddingWindow(QWidget* parent)
 {
     ui->setupUi(this);
     ui->addPushButton->setDisabled(true);
-    ui->addPushButton->setStyleSheet("color: rgb(30, 36, 39); border-radius: 10px; border-style: solid; border-width: 0px; background-color: #92AEBE; padding: 5px");
+    ui->addPushButton->setStyleSheet("QPushButton:hover { background-color: #CC3329; } QPushButton { color: rgb(244, 240, 239); border-radius: 10px; border-style: solid; border-width: 0px; background-color: #A62921; padding: 5px }");
     connect(ui->engineTypeComboBox, &QComboBox::currentIndexChanged, this, &CarAddingWindow::carAdding);
     connect(ui->backPushButton, &QPushButton::clicked, this, &CarAddingWindow::on_backPushButton_clicked);
-    connect(ui->addPushButton, &QPushButton::clicked, this, &CarAddingWindow::on_addPushButton_clicked);
+    connect(ui->addPushButton, &QPushButton::clicked, this, &CarAddingWindow::onAddPushButtonClicked);
     connect(ui->yearLineEdit, &QLineEdit::textChanged, this, &CarAddingWindow::editedAnyLineEdit);
     connect(ui->mileageLineEdit, &QLineEdit::textChanged, this, &CarAddingWindow::editedAnyLineEdit);
     connect(ui->priceLineEdit, &QLineEdit::textChanged, this, &CarAddingWindow::editedAnyLineEdit);
@@ -26,7 +26,7 @@ CarAddingWindow::~CarAddingWindow()
 {
     delete ui;
 }
-void CarAddingWindow::on_addPushButton_clicked()
+void CarAddingWindow::onAddPushButtonClicked()
 {
     ElectricEngineCar electricCar;
     CombustionEngineCar combustionCar;
@@ -100,23 +100,23 @@ void CarAddingWindow::carAdding()
     ui->fuelLineEdit->setEnabled(true);
     ui->batteryLineEdit->setEnabled(true);
     ui->hybridTypeComboBox->setEnabled(true);
-    ui->fuelLineEdit->setStyleSheet("color: rgb(30, 36, 39); border-style: solid; border-width: 0px; background-color: rgb(204, 232, 244); padding: 5px");
-    ui->hybridTypeComboBox->setStyleSheet("color: rgb(30, 36, 39); border-style: solid; border-width: 0px; background-color: rgb(204, 232, 244); padding: 5px");
-    ui->batteryLineEdit->setStyleSheet("color: rgb(30, 36, 39); border-style: solid; border-width: 0px; background-color: rgb(204, 232, 244); padding: 5px");
+    ui->fuelLineEdit->setStyleSheet("color: rgb(55, 51, 53); border-style: solid; border-width: 0px; background-color: rgb(200, 215, 210); padding: 5px");
+    ui->hybridTypeComboBox->setStyleSheet("QComboBox::drop-down { border:none; } QComboBox::down-arrow { image: url(:/rcs/free-icon-down-arrow-2985150.png); wigth: 30px; height:30px; margin-right: 5px; } QComboBox { color: rgb(55, 51, 53); border-style: solid; border-width: 0px; background-color: rgb(200, 215, 210); padding: 5px }");
+    ui->batteryLineEdit->setStyleSheet("color: rgb(55, 51, 53); border-style: solid; border-width: 0px; background-color: rgb(200, 215, 210); padding: 5px");
     int engineType = ui->engineTypeComboBox->currentIndex() + 1;
     if (engineType == 1)
     {
         ui->fuelLineEdit->setDisabled(true);
-        ui->fuelLineEdit->setStyleSheet("QLineEdit:disabled { background-color: #92AEBE; border: none; }");
+        ui->fuelLineEdit->setStyleSheet("QLineEdit:disabled { background-color: #9AB6AC; border: none; }");
         ui->hybridTypeComboBox->setDisabled(true);
-        ui->hybridTypeComboBox->setStyleSheet("QComboBox:disabled { background-color: #92AEBE; border: none; }");
+        ui->hybridTypeComboBox->setStyleSheet("QComboBox::drop-down { border:none; } QComboBox::down-arrow { image: url(:/rcs/free-icon-down-arrow-2985150.png); wigth: 30px; height:30px; margin-right: 5px; } QComboBox:disabled { background-color: #9AB6AC; border: none; }");
     }
     if (engineType == 2)
     {
         ui->batteryLineEdit->setDisabled(true);
-        ui->batteryLineEdit->setStyleSheet("QLineEdit:disabled { background-color: #92AEBE; border: none; }");
+        ui->batteryLineEdit->setStyleSheet("QLineEdit:disabled { background-color: #9AB6AC; border: none; }");
         ui->hybridTypeComboBox->setDisabled(true);
-        ui->hybridTypeComboBox->setStyleSheet("QComboBox:disabled { background-color: #92AEBE; border: none; }");
+        ui->hybridTypeComboBox->setStyleSheet("QComboBox::drop-down { border:none; } QComboBox::down-arrow { image: url(:/rcs/free-icon-down-arrow-2985150.png); wigth: 30px; height:30px; margin-right: 5px; }QComboBox:disabled { background-color: #9AB6AC; border: none; }");
     }
 }
 void CarAddingWindow::on_backPushButton_clicked()
@@ -126,10 +126,15 @@ void CarAddingWindow::on_backPushButton_clicked()
 void CarAddingWindow::editedAnyLineEdit()
 {
     ui->addPushButton->setEnabled(true);
-    ui->addPushButton->setStyleSheet("color: rgb(30, 36, 39); border-radius: 10px; border-style: solid; border-width: 0px; background-color: rgb(204, 232, 244); padding: 5px");
+    ui->addPushButton->setStyleSheet("QPushButton:hover { background-color: #CC3329; } QPushButton { color: rgb(244, 240, 239); border-radius: 10px; border-style: solid; border-width: 0px; background-color: rgb(215, 67, 57); padding: 5px }");
     if (ui->yearLineEdit->text().isEmpty() || ui->mileageLineEdit->text().isEmpty() || ui->priceLineEdit->text().isEmpty() || ui->brandLineEdit->text().isEmpty() || ui->modelLineEdit->text().isEmpty() || (ui->fuelLineEdit->text().isEmpty() && ui->fuelLineEdit->isEnabled()) || (ui->batteryLineEdit->text().isEmpty() && ui->batteryLineEdit->isEnabled()))
     {
         ui->addPushButton->setDisabled(true);
-        ui->addPushButton->setStyleSheet("color: rgb(30, 36, 39); border-radius: 10px; border-style: solid; border-width: 0px; background-color: #92AEBE; padding: 5px");
+        ui->addPushButton->setStyleSheet("QPushButton:hover { background-color: #CC3329; } QPushButton { color: rgb(244, 240, 239); border-radius: 10px; border-style: solid; border-width: 0px; background-color: #A62921; padding: 5px }");
     }
+}
+void CarAddingWindow::closeEvent(QCloseEvent* event)
+{
+    emit carAddingWindowClosed();
+    QDialog::closeEvent(event);
 }
