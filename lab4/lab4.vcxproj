@@ -109,6 +109,7 @@
     <ClCompile Include="sqlite\shell.c" />
     <ClCompile Include="sqlite\sqlite3.c" />
     <QtRcc Include="MainWindow.qrc" />
+    <QtRcc Include="resource.qrc" />
     <QtUic Include="CarAddingWindow.ui" />
     <QtUic Include="CarCompareWindow.ui" />
     <QtUic Include="CatalogWindow.ui" />

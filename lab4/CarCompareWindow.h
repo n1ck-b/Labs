@@ -65,8 +65,8 @@ public:
                 ui->CarHybridTypeLabel2->setText(QString::fromLocal8Bit("Параллельный"));
             }
         }
-
     }
+    void compareCars();
 private:
     Ui::CarCompareWindow* ui;
 private slots:

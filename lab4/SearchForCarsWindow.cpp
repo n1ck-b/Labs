@@ -13,6 +13,13 @@ SearchForCarsWindow::SearchForCarsWindow(QWidget* parent)
     connect(ui->searchPushButton, &QPushButton::clicked, this, &SearchForCarsWindow::onSearchPushButtonClicked);
     connect(ui->hybridTypeCheckBox, &QCheckBox::checkStateChanged, this, &SearchForCarsWindow::onCheckBoxEdited);
     connect(ui->backPushButton, &QPushButton::clicked, this, &SearchForCarsWindow::onBackPushButtonClicked);
+    QGraphicsDropShadowEffect* shadowEffect = new QGraphicsDropShadowEffect;
+    shadowEffect->setColor(QColor(215, 67, 57));
+    shadowEffect->setXOffset(0);
+    shadowEffect->setYOffset(0);
+    shadowEffect->setBlurRadius(10);
+    ui->searchPushButton->setGraphicsEffect(shadowEffect);
+    ui->listWidget->setFocusPolicy(Qt::NoFocus);
 }
 SearchForCarsWindow::~SearchForCarsWindow()
 {

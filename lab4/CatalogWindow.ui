@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>613</width>
+    <width>619</width>
     <height>469</height>
    </rect>
   </property>
@@ -14,12 +14,9 @@
    <string>Каталог автомобилей</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(244, 254, 246);
-color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: none;
-border-width: 0px;</string>
+   <string notr="true">background-color: rgb(244, 240, 239);
+font: 600 10pt &quot;Montserrat&quot;;
+color: rgb(55, 51, 53);</string>
   </property>
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
@@ -31,12 +28,28 @@ border-width: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(244, 254, 246);
+    <string notr="true">QListWidget
+{
+background-color: rgb(244, 240, 239);
 border: none;
 border-radius: 15px;
-color: rgb(30, 36, 39);
+color: rgb(55, 51, 53);
 font: 9pt &quot;Montserrat&quot;;
-outline: 0px;</string>
+outline: 0px;
+}
+QListWidget::item
+{
+outline: none;
+padding: 2px;
+}
+QListWidget::item:focus
+{
+        outline: none; 
+}
+QListWidget::focus 
+{
+        outline: none; 
+}</string>
    </property>
   </widget>
   <widget class="QPushButton" name="backPushButton">
@@ -49,13 +62,21 @@ outline: 0px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QPushButton:hover
+{
+	background-color: #9AB6AC;
+}
+QPushButton{
+	color: rgb(55, 51, 53);
+	font: 600 10pt &quot;Montserrat&quot;;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(200, 215, 210);
+	padding: 5px;
+}
+
+</string>
    </property>
    <property name="text">
     <string>Назад</string>
@@ -71,7 +92,7 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 11pt &quot;Montserrat&quot;;</string>
    </property>
    <property name="text">
@@ -88,13 +109,20 @@ font: 600 11pt &quot;Montserrat&quot;;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QPushButton:hover
+{
+	background-color: #CC3329;
+}
+QPushButton{
+	color: rgb(244, 240, 239);
+	font: 600 10pt &quot;Montserrat&quot;;
+	border-radius: 12px;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(215, 67, 57);
+	padding: 5px;
+}
+</string>
    </property>
    <property name="text">
     <string>Добавить</string>
@@ -110,13 +138,20 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QPushButton:hover
+{
+	background-color: #CC3329;
+}
+QPushButton{
+	color: rgb(244, 240, 239);
+	font: 600 10pt &quot;Montserrat&quot;;
+	border-radius: 12px;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(215, 67, 57);
+	padding: 5px;
+}
+</string>
    </property>
    <property name="text">
     <string>Удалить</string>
@@ -132,7 +167,7 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 10pt &quot;Montserrat&quot;;
 </string>
    </property>
@@ -146,7 +181,7 @@ font: 600 10pt &quot;Montserrat&quot;;
     <rect>
      <x>470</x>
      <y>220</y>
-     <width>121</width>
+     <width>130</width>
      <height>121</height>
     </rect>
    </property>
@@ -173,13 +208,20 @@ font: 600 10pt &quot;Montserrat&quot;;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QPushButton:hover
+{
+	background-color: #9AB6AC;
+}
+QPushButton{
+	color: rgb(55, 51, 53);
+	font: 600 10pt &quot;Montserrat&quot;;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(200, 215, 210);
+	padding: 5px;
+}
+</string>
    </property>
    <property name="text">
     <string>Выбрать</string>

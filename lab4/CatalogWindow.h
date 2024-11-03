@@ -6,6 +6,7 @@
 #include <QListWidget>
 #include <QDialog>
 #include <QInputDialog>
+#include "CarAddingWindow.h"
 
 namespace Ui {
     class CatalogWindow;
@@ -20,6 +21,7 @@ public:
     ~CatalogWindow();
     void addItemsToList();
     void getDataForComparison();
+    CarAddingWindow* carAddingWindow;
 private:
     Ui::CatalogWindow* ui;
     int clickCountForComparison;
@@ -27,10 +29,11 @@ private:
     int carIndexForComparison2;
 private slots:
     void on_backPushButton_clicked();
-    void on_addPushButton_clicked();
+    void onAddPushButtonClicked();
     void choosedItemInList();
     void onDeletePushButtonClicked();
     void onComparePushButtonClicked();
+    void onCarAddingWindowClosed();
 };
 
 #endif // CATALOGWINDOW_H

@@ -19,13 +19,20 @@ public:
     explicit CarAddingWindow(QWidget* parent = nullptr);
     ~CarAddingWindow();
     void carAdding();
+signals:
+    void carAddingWindowClosed();
 private:
     Ui::CarAddingWindow* ui;
 private slots:
     void on_backPushButton_clicked();
-    void on_addPushButton_clicked();
+    void onAddPushButtonClicked();
     void editedAnyLineEdit();
+<<<<<<< Updated upstream
    /* void editedMileageLineEdit();*/
+=======
+protected:
+    void closeEvent(QCloseEvent* event) override;
+>>>>>>> Stashed changes
 };
 
 #endif // CARADDINGWINDOW_H

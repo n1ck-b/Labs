@@ -14,9 +14,9 @@
    <string>Добавление автомобиля в каталог</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(244, 254, 246);
-color: rgb(30, 36, 39);
-font: 600 8pt &quot;Montserrat&quot;;</string>
+   <string notr="true">background-color: rgb(244, 240, 239);
+font: 600 8pt &quot;Montserrat&quot;;
+color: rgb(55, 51, 53);</string>
   </property>
   <widget class="QLabel" name="yearLabel">
    <property name="geometry">
@@ -54,12 +54,12 @@ font: 600 8pt &quot;Montserrat&quot;;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLabel" name="priceLabel">
@@ -98,12 +98,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLabel" name="modelLabel">
@@ -129,12 +129,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="priceLineEdit">
@@ -147,12 +147,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="modelLineEdit">
@@ -165,12 +165,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLabel" name="topLabel">
@@ -201,13 +201,19 @@ font: 700 10pt &quot;Montserrat&quot;;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QPushButton:hover
+{
+	background-color: #CC3329;
+}
+QPushButton{
+	color: rgb(244, 240, 239);
+	font: 600 9pt &quot;Montserrat&quot;;
+	border-radius: 12px;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(215, 67, 57);
+	padding: 5px;
+}</string>
    </property>
    <property name="text">
     <string>Добавить автомобиль</string>
@@ -237,12 +243,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="batteryLineEdit">
@@ -255,12 +261,12 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
+    <string notr="true">color: rgb(55, 51, 53);
 font: 600 9pt &quot;Montserrat&quot;;
 border-style: solid;
 border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+padding: 5px;
+background-color: rgb(200, 215, 210);</string>
    </property>
   </widget>
   <widget class="QLabel" name="batteryLabel">
@@ -301,12 +307,26 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QComboBox 
+{
+	color: rgb(30, 36, 39);
+	font: 600 9pt &quot;Montserrat&quot;;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(200, 215, 210);
+	padding: 5px;
+}
+QComboBox::drop-down
+{
+	border:none;
+}
+QComboBox::down-arrow
+{
+	image: url(:/rcs/free-icon-down-arrow-2985150.png);
+	wigth: 30px;
+	height:30px;
+	margin-right: 5px;
+}</string>
    </property>
    <item>
     <property name="text">
@@ -343,12 +363,26 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QComboBox 
+{
+	color: rgb(30, 36, 39);
+	font: 600 9pt &quot;Montserrat&quot;;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(200, 215, 210);
+	padding: 5px;
+}
+QComboBox::drop-down
+{
+	border:none;
+}
+QComboBox::down-arrow
+{
+	image: url(:/rcs/free-icon-down-arrow-2985150.png);
+	wigth: 30px;
+	height:30px;
+	margin-right: 5px;
+}</string>
    </property>
    <item>
     <property name="text">
@@ -376,19 +410,29 @@ padding: 5px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(30, 36, 39);
-font: 600 9pt &quot;Montserrat&quot;;
-border-radius: 10px;
-border-style: solid;
-border-width: 0px;
-background-color: rgb(204, 232, 244);
-padding: 5px</string>
+    <string notr="true">QPushButton:hover
+{
+	background-color: #9AB6AC;
+}
+QPushButton{
+	color: rgb(55, 51, 53);
+	font: 600 9pt &quot;Montserrat&quot;;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 0px;
+	background-color: rgb(200, 215, 210);
+	padding: 5px;
+}
+
+</string>
    </property>
    <property name="text">
     <string>Назад</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
