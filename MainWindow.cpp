@@ -35,12 +35,6 @@ void MainWindow::onSearchPushButtonClicked()
 }
 void MainWindow::setStyles()
 {
-   /* QPropertyAnimation* animation = new QPropertyAnimation(ui.catalogPushButton, "BackgroundColor", this);
-    animation->setDuration(300);
-    QColor color("#cce8f4");
-    animation->setStartValue(color);
-    color = "#92AEBE";
-    animation->setEndValue(color);*/
     QGraphicsDropShadowEffect* shadowEffect = new QGraphicsDropShadowEffect;
     shadowEffect->setColor(QColor(215, 67, 57));
     shadowEffect->setXOffset(0);
