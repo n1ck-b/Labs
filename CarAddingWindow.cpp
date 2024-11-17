@@ -153,11 +153,6 @@ void CarAddingWindow::editedAnyLineEdit()
 {
     ui->addPushButton->setEnabled(true);
     ui->addPushButton->setStyleSheet("QPushButton:hover { background-color: #CC3329; } QPushButton { color: rgb(244, 240, 239); border-radius: 10px; border-style: solid; border-width: 0px; background-color: rgb(215, 67, 57); padding: 5px }");
-   /* if (ui->yearLineEdit->text().isEmpty() || ui->mileageLineEdit->text().isEmpty() || ui->priceLineEdit->text().isEmpty() || ui->brandLineEdit->text().isEmpty() || ui->modelLineEdit->text().isEmpty() || (ui->fuelLineEdit->text().isEmpty() && ui->fuelLineEdit->isEnabled()) || (ui->batteryLineEdit->text().isEmpty() && ui->batteryLineEdit->isEnabled()))
-    {
-        ui->addPushButton->setDisabled(true);
-        ui->addPushButton->setStyleSheet("QPushButton:hover { background-color: #CC3329; } QPushButton { color: rgb(244, 240, 239); border-radius: 10px; border-style: solid; border-width: 0px; background-color: #A62921; padding: 5px }");
-    }*/
     try
     {
         if (ui->yearLineEdit->text().isEmpty() || ui->mileageLineEdit->text().isEmpty() || ui->priceLineEdit->text().isEmpty() || ui->brandLineEdit->text().isEmpty() || ui->modelLineEdit->text().isEmpty() || (ui->batteryLineEdit->text().isEmpty() && ui->batteryLineEdit->isEnabled()) || (ui->fuelLineEdit->text().isEmpty() && ui->fuelLineEdit->isEnabled()))
@@ -199,21 +194,3 @@ void CarAddingWindow::setValidators()
     ui->batteryLineEdit->setValidator(validatorForFuelAndBatteryCapacity);
     ui->fuelLineEdit->setValidator(validatorForFuelAndBatteryCapacity);
 }
-//void CarAddingWindow::checkForInput()
-//{
-//    try
-//    {
-//        if (ui->yearLineEdit->text().isEmpty() || ui->mileageLineEdit->text().isEmpty() || ui->priceLineEdit->text().isEmpty() || ui->brandLineEdit->text().isEmpty() || ui->modelLineEdit->text().isEmpty() || (ui->batteryLineEdit->text().isEmpty() && ui->batteryLineEdit->isEnabled()) || (ui->fuelLineEdit->text().isEmpty() && ui->fuelLineEdit->isEnabled()))
-//            throw Exception("Заполните все поля");
-//        else
-//            ui->warningLabel->setText("");
-//        if (!ui->yearLineEdit->text().toInt() || !ui->mileageLineEdit->text().toInt() || !ui->priceLineEdit->text().toFloat() || (!ui->batteryLineEdit->text().toFloat() && ui->batteryLineEdit->isEnabled()) || (!ui->fuelLineEdit->text().toFloat() && ui->fuelLineEdit->isEnabled()))
-//            throw Exception("Введена строка вместо числа");
-//        else
-//            ui->warningLabel->setText("");
-//    }
-//    catch (Exception& ex)
-//    {
-//        ui->warningLabel->setText(QString::fromLocal8Bit(ex.what()));
-//    }
-//}
