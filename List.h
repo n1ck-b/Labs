@@ -56,11 +56,11 @@ public:
 		temp->car.setPrice(Car.getPrice());
 		temp->car.setBrand(Car.getBrand());
 		temp->car.setModel(Car.getModel());
-		if constexpr (std::is_same<T, CombustionEngineCar>::value || std::is_same<T, HybridEngineCar>::value)
+		if constexpr (std::is_same_v<T, CombustionEngineCar> || std::is_same_v<T, HybridEngineCar>)
 			temp->car.setFuelTankCapacity(Car.getFuelTankCapacity());
-		if constexpr (std::is_same<T, ElectricEngineCar>::value || std::is_same<T, HybridEngineCar>::value)
+		if constexpr (std::is_same_v<T, ElectricEngineCar> || std::is_same_v<T, HybridEngineCar>)
 			temp->car.setBatteryCapacity(Car.getBatteryCapacity());
-		if constexpr (std::is_same<T, HybridEngineCar>::value)
+		if constexpr (std::is_same_v<T, HybridEngineCar>)
 			temp->car.setHybridType(Car.getHybridType());
 		sizeOfList++;
 	}
@@ -87,11 +87,11 @@ public:
 			newNode->car.setPrice(Car.getPrice());
 			newNode->car.setBrand(Car.getBrand());
 			newNode->car.setModel(Car.getModel());
-			if constexpr (std::is_same<T, CombustionEngineCar>::value || std::is_same<T, HybridEngineCar>::value)
+			if constexpr (std::is_same_v<T, CombustionEngineCar> || std::is_same_v<T, HybridEngineCar>)
 				newNode->car.setFuelTankCapacity(Car.getFuelTankCapacity());
-			if constexpr (std::is_same<T, ElectricEngineCar>::value || std::is_same<T, HybridEngineCar>::value)
+			if constexpr (std::is_same_v<T, ElectricEngineCar> || std::is_same_v<T, HybridEngineCar>)
 				newNode->car.setBatteryCapacity(Car.getBatteryCapacity());
-			if constexpr (std::is_same<T, HybridEngineCar>::value)
+			if constexpr (std::is_same_v<T, HybridEngineCar>)
 				newNode->car.setHybridType(Car.getHybridType());
 			sizeOfList++;
 		}
