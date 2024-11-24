@@ -340,8 +340,6 @@ public:
 		sqlite3_stmt* stmt;
 		error = sqlite3_prepare_v2(dataBase, SQL, -1, &stmt, nullptr);
 		CombustionEngineCar combustionCar;
-		/*bool isFirst = true;
-		List<CombustionEngineCar>::Iterator it = combustionCarsList.begin();*/
 		while (sqlite3_step(stmt) == SQLITE_ROW)
 		{
 			combustionCar.setYear(sqlite3_column_int(stmt, 1));
@@ -351,13 +349,6 @@ public:
 			combustionCar.setModel((const char*)sqlite3_column_text(stmt, 5));
 			combustionCar.setFuelTankCapacity(static_cast<float>(sqlite3_column_double(stmt, 6)));
 			combustionCarsList.pushBack(combustionCar);
-			/*combustionCarsList.insert(it, combustionCar);
-			if (isFirst)
-			{
-				it = combustionCarsList.begin();
-				isFirst = false;
-			}
-			++it;*/
 		}
 		SQL = "SELECT * FROM electric_cars";
 		error = sqlite3_prepare_v2(dataBase, SQL, -1, &stmt, nullptr);
