@@ -32,7 +32,7 @@ CatalogWindow::~CatalogWindow()
 void CatalogWindow::onBackPushButtonClicked()
 {
     close();
-    MainWindow* mainWindow = new MainWindow(this);
+    auto mainWindow = new MainWindow(this);
     mainWindow->show();
 }
 void CatalogWindow::onAddPushButtonClicked()
@@ -234,7 +234,7 @@ void CatalogWindow::onFilterComboBoxChanged()
     if (ui->filterComboBox->currentIndex() == 1)
     {
         ElectricEngineCar car;
-        for (List<ElectricEngineCar>::Iterator it(electricCarsList.begin()); it != electricCarsList.end(); ++it)
+        for (auto it(electricCarsList.begin()); it != electricCarsList.end(); ++it)
         {
            car = *it;
            carData = std::to_string(count) + "-й автомобиль:\n" + "  Год выпуска: " + std::to_string(car.getYear()) + "\n" + "  Пробег в км: " + std::to_string(car.getMileage()) + "\n" + "  Стоимость в $ : ";
@@ -252,7 +252,7 @@ void CatalogWindow::onFilterComboBoxChanged()
     if (ui->filterComboBox->currentIndex() == 2)
     {
         CombustionEngineCar car;
-        for (List<CombustionEngineCar>::Iterator it(combustionCarsList.begin()); it != combustionCarsList.end(); it++)
+        for (auto it(combustionCarsList.begin()); it != combustionCarsList.end(); it++)
         {
             car = *it;
             carData = std::to_string(count) + "-й автомобиль:\n" + "  Год выпуска: " + std::to_string(car.getYear()) + "\n" + "  Пробег в км: " + std::to_string(car.getMileage()) + "\n" + "  Стоимость в $ : ";
@@ -270,7 +270,7 @@ void CatalogWindow::onFilterComboBoxChanged()
     if (ui->filterComboBox->currentIndex() == 3)
     {
         HybridEngineCar car;
-        for (List<HybridEngineCar>::Iterator it(hybridCarsList.begin()); it != hybridCarsList.end(); ++it)
+        for (auto it(hybridCarsList.begin()); it != hybridCarsList.end(); ++it)
         {
             car = *it;
             carData = std::to_string(count) + "-й автомобиль:\n" + "  Год выпуска: " + std::to_string(car.getYear()) + "\n" + "  Пробег в км: " + std::to_string(car.getMileage()) + "\n" + "  Стоимость в $ : ";
