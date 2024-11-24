@@ -39,7 +39,7 @@ public:
 	}
 	void pushBack(T Car)
 	{
-		Node<T>* temp = new Node<T>;
+		auto temp = new Node<T>;
 		if (isEmpty())
 		{
 			first = temp;
@@ -76,8 +76,8 @@ public:
 	{
 		if (size() > 1 && it != first)
 		{
-			Node<T>* newNode = new Node<T>;
-			Node<T>* prevNode = it.current->prev;
+			auto newNode = new Node<T>;
+			auto prevNode = it.current->prev;
 			it.current->prev = newNode;
 			newNode->next = it.current;
 			prevNode->next = newNode;
