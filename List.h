@@ -1,11 +1,7 @@
 #pragma once
 #include "Functions.h"
 #include "Node.h"
-//#include "Iterator.h"
 #include <type_traits>
-
-//template <typename T>
-//class Iterator;
 
 template <typename T>
 class List
@@ -26,12 +22,6 @@ public:
 	}
 	~List()
 	{
-		/*Node<T>* temp = first;
-		while (temp != last && !isEmpty())
-		{
-			popBack();
-			temp = temp->next;
-		}*/
 		List<T>::Iterator it = List<T>::begin();
 		while (it != List::end())
 		{
