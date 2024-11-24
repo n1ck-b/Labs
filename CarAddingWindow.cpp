@@ -184,13 +184,13 @@ void CarAddingWindow::closeEvent(QCloseEvent* event)
 }
 void CarAddingWindow::setValidators()
 {
-    QIntValidator* validatorForMileage = new QIntValidator(0, 2000000, this);
+    auto validatorForMileage = new QIntValidator(0, 2000000, this);
     ui->mileageLineEdit->setValidator(validatorForMileage);
-    QIntValidator* validatorForYear = new QIntValidator(1800, 2024, this);
+    auto validatorForYear = new QIntValidator(1800, 2024, this);
     ui->yearLineEdit->setValidator(validatorForYear);
-    QDoubleValidator* validatorForPrice = new QDoubleValidator(1.0, 10000000.0, 3, this);
+    auto validatorForPrice = new QDoubleValidator(1.0, 10000000.0, 3, this);
     ui->priceLineEdit->setValidator(validatorForPrice);
-    QDoubleValidator* validatorForFuelAndBatteryCapacity = new QDoubleValidator(10.0, 1000.0, 3, this);
+    auto validatorForFuelAndBatteryCapacity = new QDoubleValidator(10.0, 1000.0, 3, this);
     ui->batteryLineEdit->setValidator(validatorForFuelAndBatteryCapacity);
     ui->fuelLineEdit->setValidator(validatorForFuelAndBatteryCapacity);
 }
