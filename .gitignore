@@ -30,3 +30,8 @@ x86/
 *.log
 *.tlog
 *.lastbuildstate
+*.cd
+*.png
+*.txt
+*.c
+*.db
